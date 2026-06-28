@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FWA Investigation Agent — Case Packages</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f1f5f9;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+        
+        .header {
+            background: #1e293b;
+            color: white;
+            padding: 32px 40px;
+            margin-bottom: 32px;
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .header p {
+            color: #94a3b8;
+            font-size: 14px;
+        }
+        
+        .system-note {
+            background: #dbeafe;
+            border: 1px solid #3b82f6;
+            border-radius: 8px;
+            padding: 16px 24px;
+            margin: 0 40px 32px;
+            font-size: 14px;
+            color: #1d4ed8;
+        }
+        
+        .cases-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 40px 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+        }
+        
+        .case-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        
+        .case-header {
+            background: #1e293b;
+            color: white;
+            padding: 24px 28px;
+        }
+        
+        .case-id {
+            font-size: 12px;
+            color: #94a3b8;
+            font-family: monospace;
+            margin-bottom: 4px;
+        }
+        
+        .case-name {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        
+        .case-type {
+            font-size: 13px;
+            color: #cbd5e1;
+        }
+        
+        .case-card > div:not(.case-header) {
+            padding: 20px 28px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        
+        .case-card h3 {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #64748b;
+            margin-bottom: 12px;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            font-size: 14px;
+        }
+        
+        .core-anomaly p {
+            font-size: 15px;
+            color: #334155;
+            background: #fef9c3;
+            padding: 12px 16px;
+            border-radius: 6px;
+            border-left: 4px solid #eab308;
+        }
+        
+        .reasoning-step {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 14px 16px;
+            margin-bottom: 10px;
+            border-left: 3px solid #3b82f6;
+        }
+        
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        
+        .step-number {
+            background: #3b82f6;
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+        
+        .step-check {
+            font-weight: 600;
+            font-size: 14px;
+            color: #1e293b;
+        }
+        
+        .step-finding, .step-significance {
+            font-size: 13px;
+            color: #475569;
+            margin-top: 4px;
+        }
+        
+        .alternative {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-bottom: 8px;
+            font-size: 13px;
+            color: #475569;
+            border-left: 3px solid #8b5cf6;
+        }
+        
+        .alt-explanation { margin-bottom: 6px; }
+        
+        .evidence-section ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .evidence-section li {
+            font-size: 13px;
+            color: #334155;
+            padding: 8px 12px;
+            background: #f8fafc;
+            border-radius: 6px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .evidence-section li::before {
+            content: "→";
+            position: absolute;
+            left: 6px;
+            color: #64748b;
+        }
+        
+        .confidence-section {
+            padding: 20px 28px;
+            background: #f8fafc;
+        }
+        
+        .confidence-level {
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+        
+        .confidence-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 10px;
+        }
+        
+        .confidence-rationale {
+            font-size: 13px;
+            color: #475569;
+        }
+        
+        .recommendation {
+            font-size: 15px;
+            color: #1e293b;
+            background: #f0fdf4;
+            padding: 14px 16px;
+            border-radius: 8px;
+            border-left: 4px solid #16a34a;
+            margin-bottom: 12px;
+        }
+        
+        .compliance-note {
+            font-size: 12px;
+            color: #64748b;
+            font-style: italic;
+        }
+        
+        .judge-pass {
+            font-size: 13px;
+            font-weight: 700;
+            padding: 8px 14px;
+            border: 2px solid;
+            border-radius: 6px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        
+        .quality-note {
+            font-size: 13px;
+            color: #475569;
+            margin-bottom: 14px;
+        }
+        
+        .judge-criterion {
+            background: #f8fafc;
+            border-radius: 6px;
+            padding: 10px 14px;
+            margin-bottom: 8px;
+        }
+        
+        .criterion-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+        
+        .criterion-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #334155;
+        }
+        
+        .criterion-score {
+            font-size: 14px;
+            font-weight: 800;
+        }
+        
+        .criterion-comment {
+            font-size: 12px;
+            color: #64748b;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 32px;
+            color: #94a3b8;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>FWA Investigation Agent — Case Packages</h1>
+    <p>Agentic AI Pre-Investigation Triage | Proof of Concept | Cotiviti Assessment</p>
+    <p style="margin-top:8px;">Model: Llama 4 Scout via Groq | Evaluation: LLM-as-Judge | Cases grounded in DOJ 2026 National Fraud Takedown patterns</p>
+</div>
+
+<div class="system-note">
+    <strong>System Note:</strong> These case packages are produced by an autonomous investigation agent and delivered to the SIU analyst in place of a raw risk score. The agent reasons through billing evidence, considers alternative explanations, and recommends a next action. All denial and referral decisions remain with the human SIU analyst. This system is compliant with AMA June 2026 policy on AI in coverage determinations.
+</div>
+
+<div class="cases-container">
+    
+        <div class="case-card">
+            <div class="case-header">
+                <div class="case-id">FWA-2026-001</div>
+                <div class="case-name">Wound Allograft Overbilling</div>
+                <div class="case-type">Billing for medically unnecessary services / diagnosis-procedure mismatch</div>
+            </div>
+            
+            <div class="provider-info">
+                <h3>Provider Information</h3>
+                <div class="info-grid">
+                    <div><strong>Provider:</strong> Coastal Dermatology Associates</div>
+                    <div><strong>Specialty:</strong> Dermatology</div>
+                    <div><strong>Location:</strong> Miami, FL</div>
+                    <div><strong>Prior Investigation:</strong> False</div>
+                </div>
+            </div>
+
+            <div class="core-anomaly">
+                <h3>Core Anomaly Identified</h3>
+                <p>The claim for procedure code Q4121 (Amniotic wound allograft application) on 2026-05-15 for $14,500.00 with diagnosis code S00.01XA (Superficial abrasion of scalp, initial encounter) significantly exceeds peer averages and lacks prior authorization.</p>
+            </div>
+
+            <div class="reasoning-section">
+                <h3>Investigation Reasoning Chain</h3>
+                
+            <div class="reasoning-step">
+                <div class="step-header">
+                    <span class="step-number">Step 1</span>
+                    <span class="step-check">Diagnosis code supports procedure</span>
+                </div>
+                <div class="step-finding"><strong>Finding:</strong> False</div>
+                <div class="step-significance"><strong>Significance:</strong> The diagnosis code S00.01XA (Superficial abrasion of scalp, initial encounter) does not clinically support the application of an amniotic wound allograft (Q4121) as superficial abrasions are minor and typically heal without such interventions.</div>
+            </div>
+            <div class="reasoning-step">
+                <div class="step-header">
+                    <span class="step-number">Step 2</span>
+                    <span class="step-check">Billing volume and peer comparison</span>
+                </div>
+                <div class="step-finding"><strong>Finding:</strong> The provider is in the 99th percentile for billing compared to peers in the same specialty and geography, with a 200% deviation above the peer average and a 280% increase in volume since 2026-02-01.</div>
+                <div class="step-significance"><strong>Significance:</strong> This indicates a significant deviation from expected billing patterns, suggesting potential overbilling.</div>
+            </div>
+            <div class="reasoning-step">
+                <div class="step-header">
+                    <span class="step-number">Step 3</span>
+                    <span class="step-check">Prior authorization</span>
+                </div>
+                <div class="step-finding"><strong>Finding:</strong> Prior authorization was required but not obtained.</div>
+                <div class="step-significance"><strong>Significance:</strong> Lack of prior authorization raises concerns about the legitimacy of the billing process.</div>
+            </div>
+            </div>
+
+            <div class="alternatives-section">
+                <h3>Alternative Explanations Considered</h3>
+                
+            <div class="alternative">
+                <div class="alt-explanation"><strong>Explanation considered:</strong> Unusual patient condition</div>
+                <div class="alt-assessment"><strong>Assessment:</strong> While possible, there is no evidence provided that the patient's condition was unusually severe or complex to justify the use of an allograft for a superficial abrasion.</div>
+            </div>
+            <div class="alternative">
+                <div class="alt-explanation"><strong>Explanation considered:</strong> Billing error or coding mistake</div>
+                <div class="alt-assessment"><strong>Assessment:</strong> The significant deviation from peer averages and the specific lack of clinical support for the procedure suggest that this is more than a simple error.</div>
+            </div>
+            <div class="alternative">
+                <div class="alt-explanation"><strong>Explanation considered:</strong> Educational or training purposes</div>
+                <div class="alt-assessment"><strong>Assessment:</strong> There is no indication that the procedure was part of an educational or training program, and such activities would typically have clear documentation and oversight.</div>
+            </div>
+            </div>
+
+            <div class="evidence-section">
+                <h3>Key Evidence</h3>
+                <ul><li>Diagnosis code S00.01XA does not support the medical necessity of procedure Q4121.</li><li>Significant deviation from peer billing averages (200% above) and volume spike (280% increase).</li><li>Lack of prior authorization for the procedure.</li></ul>
+            </div>
+
+            <div class="confidence-section" style="border-left: 5px solid #dc2626;">
+                <div class="confidence-level" style="color: #dc2626;">
+                    HIGH SUSPICION
+                </div>
+                <div class="confidence-label">HIGH SUSPICION — Escalate to Full Investigation</div>
+                <div class="confidence-rationale">The combination of a significant billing deviation, lack of clinical support for the procedure, and absence of prior authorization strongly suggests potential fraud or abuse.</div>
+            </div>
+
+            <div class="recommendation-section">
+                <h3>Recommended Action for SIU Analyst</h3>
+                <p class="recommendation">The SIU analyst should request additional documentation from Coastal Dermatology Associates, including medical records supporting the necessity of the allograft application for the patient's condition, and investigate further to determine if there was a legitimate reason for the deviation from standard billing practices.</p>
+                <p class="compliance-note">This case package is for investigative purposes only. All denial or referral decisions require human SIU analyst review.</p>
+            </div>
+
+            <div class="judge-section">
+                <h3>Quality Evaluation — LLM-as-Judge</h3>
+                <div class="judge-pass" style="color: #16a34a; border-color: #16a34a;">
+                    PASSES QUALITY THRESHOLD | Overall Score: 5/5
+                </div>
+                <p class="quality-note">The case package produced by the investigation agent demonstrates thorough and accurate analysis, logical sequencing, and adherence to compliance requirements, indicating a high-quality investigation.</p>
+                
+                <div class="judge-criterion">
+                    <div class="criterion-header">
+                        <span class="criterion-label">Reasoning Completeness</span>
+                        <span class="criterion-score" style="color: #16a34a;">5/5</span>
+                    </div>
+                    <div class="criterion-comment">The agent thoroughly examined all available evidence, including diagnosis codes, billing history, peer comparisons, and prior authorization status. The reasoning chain is comprehensive and clearly articulated.</div>
+                </div>
+                <div class="judge-criterion">
+                    <div class="criterion-header">
+                        <span class="criterion-label">Evidence Accuracy</span>
+                        <span class="criterion-score" style="color: #16a34a;">5/5</span>
+                    </div>
+                    <div class="criterion-comment">The agent's findings are consistent with the data provided. The agent accurately identified the deviation from peer averages, the lack of clinical support for the procedure given the diagnosis, and the absence of prior authorization.</div>
+                </div>
+                <div class="judge-criterion">
+                    <div class="criterion-header">
+                        <span class="criterion-label">Step Sequencing</span>
+                        <span class="criterion-score" style="color: #16a34a;">5/5</span>
+                    </div>
+                    <div class="criterion-comment">The agent followed a logical investigation sequence, starting with assessing the clinical support for the procedure, then evaluating billing patterns and deviations from peer averages, and finally considering alternative explanations and required actions.</div>
+                </div>
+                <div class="judge-criterion">
+                    <div class="criterion-header">
+                        <span class="criterion-label">Compliance Adherence</span>
+                        <span class="criterion-score" style="color: #16a34a;">5/5</span>
+                    </div>
+                    <div class="criterion-comment">The agent recommended further investigation and documentation request rather than making a definitive decision, adhering to compliance requirements and the role of an investigative tool.</div>
+                </div>
+            </div>
+        </div>
+        <div class="case-card">
+            <div class="case-header">
+                <div class="case-id">FWA-2026-002</div>
+                <div class="case-name">Complex E&M Upcoding - False Positive</div>
+                <div class="case-type">Suspected upcoding - high complexity evaluation and management codes</div>
+            </div>
+            
+            <div class="provider-info">
+                <h3>Provider Information</h3>
+                <div class="info-grid">
+                    <div><strong>Provider:</strong> Northside Internal Medicine Group</div>
+                    <div><strong>Specialty:</strong> Internal Medicine</div>
+                    <div><strong>Location:</strong> Rural Appalachian Kentucky</div>
+                    <div><strong>Prior Investigation:</strong> False</div>
+                </div>
+            </div>
+
+            <div class="core-anomaly">
+                <h3>Core Anomaly Identified</h3>
+                <p>The claim for procedure code 99205 (Office visit - new patient, high medical decision complexity) on 2026-05-20 for $320.00 was flagged for potential upcoding.</p>
+            </div>
+
+            <div class="reasoning-section">
+                <h3>Investigation Reasoning Chain</h3>
+                
+            <div class="reasoning-step">
+                <div class="step-header">
+                    <span class="step-number">Step 1</span>
+                    <span class="step-check">Whether the diagnosis codes clinically support the procedures billed</span>
+                </div>
+                <div class="step-finding"><strong>Finding:</strong> The diagnosis code E11.65 (Type 2 diabetes with hyperglycemia, with multiple comorbidities) supports the high complexity E&M coding given the patient's multiple chronic conditions.</div>
+                <div class="step-significance"><strong>Significance:</strong> The patient's condition justifies the billed complexity level.</div>
+            </div>
+            <div class="reasoning-step">
+                <div class="step-header">
+                    <span class="step-number">Step 2</span>
+                    <span class="step-check">Billing volume against peer benchmarks</span>
+                </div>
+                <div class="step-finding"><strong>Finding:</strong> The provider's billing average of $298.00 is 123% above the peer average of $187.00, placing them in the 91st percentile among internal medicine peers in Rural Appalachian Kentucky.</div>
+                <div class="step-significance"><strong>Significance:</strong> This deviation suggests potential overbilling but could be justified by patient acuity and rural HPSA designation.</div>
+            </div>
+            <div class="reasoning-step">
+                <div class="step-header">
+                    <span class="step-number">Step 3</span>
+                    <span class="step-check">Prior authorization compliance</span>
+                </div>
+                <div class="step-finding"><strong>Finding:</strong> Prior authorization was obtained for the procedure.</div>
+                <div class="step-significance"><strong>Significance:</strong> This indicates compliance with authorization requirements.</div>
+            </div>
+            </div>
+
+            <div class="alternatives-section">
+                <h3>Alternative Explanations Considered</h3>
+                
+            <div class="alternative">
+                <div class="alt-explanation"><strong>Explanation considered:</strong> The high billing rate is justified by the high acuity of the patient population, with 84% being Medicare beneficiaries with multiple chronic conditions.</div>
+                <div class="alt-assessment"><strong>Assessment:</strong> This explanation is plausible given the documented high acuity of patients and the rural HPSA designation.</div>
+            </div>
+            <div class="alternative">
+                <div class="alt-explanation"><strong>Explanation considered:</strong> The provider's experience and the complexity of cases managed justify the higher billing.</div>
+                <div class="alt-assessment"><strong>Assessment:</strong> This could be a legitimate factor given the provider's 12 years of billing experience and the clinical appropriateness of the coding.</div>
+            </div>
+            </div>
+
+            <div class="evidence-section">
+                <h3>Key Evidence</h3>
+                <ul><li>The patient's multiple chronic conditions (Type 2 diabetes, COPD, heart failure, and CKD) support the high complexity E&M coding.</li><li>The provider's practice is in a rural HPSA with limited peer providers, which could justify higher billing due to patient acuity and access issues.</li></ul>
+            </div>
+
+            <div class="confidence-section" style="border-left: 5px solid #16a34a;">
+                <div class="confidence-level" style="color: #16a34a;">
+                    LOW SUSPICION
+                </div>
+                <div class="confidence-label">LOW SUSPICION — Recommend Closing Flag</div>
+                <div class="confidence-rationale">The evidence suggests that the flagged claim may not be an instance of upcoding but rather a justified billing given the patient's high acuity and the provider's practice context.</div>
+            </div>
+
+            <div class="recommendation-section">
+                <h3>Recommended Action for SIU Analyst</h3>
+                <p class="recommendation">Review the claim in the context of the patient's medical record and the provider's billing patterns to confirm the legitimacy of the billing.</p>
+                <p class="compliance-note">This case package is for investigative purposes only. All denial or referral decisions require human SIU analyst review.</p>
+            </div>
+
+            <div class="judge-section">
+                <h3>Quality Evaluation — LLM-as-Judge</h3>
+                <div class="judge-pass" style="color: #16a34a; border-color: #16a34a;">
+                    PASSES QUALITY THRESHOLD | Overall Score: 5/5
+                </div>
+                <p class="quality-note">The agent produced a thorough and accurate case package that adheres to investigative standards and compliance requirements.</p>
+                
+                <div class="judge-criterion">
+                    <div class="criterion-header">
+                        <span class="criterion-label">Reasoning Completeness</span>
+                        <span class="criterion-score" style="color: #16a34a;">5/5</span>
+                    </div>
+                    <div class="criterion-comment">The agent considered all available evidence, including patient acuity, billing history, and peer comparisons, to evaluate the claim.</div>
+                </div>
+                <div class="judge-criterion">
+                    <div class="criterion-header">
+                        <span class="criterion-label">Evidence Accuracy</span>
+                        <span class="criterion-score" style="color: #16a34a;">5/5</span>
+                    </div>
+                    <div class="criterion-comment">The agent's findings are consistent with the data provided, accurately reflecting the patient's conditions, billing patterns, and practice context.</div>
+                </div>
+                <div class="judge-criterion">
+                    <div class="criterion-header">
+                        <span class="criterion-label">Step Sequencing</span>
+                        <span class="criterion-score" style="color: #16a34a;">5/5</span>
+                    </div>
+                    <div class="criterion-comment">The agent followed a logical investigation sequence, starting with clinical support, then billing volume, and finally prior authorization compliance.</div>
+                </div>
+                <div class="judge-criterion">
+                    <div class="criterion-header">
+                        <span class="criterion-label">Compliance Adherence</span>
+                        <span class="criterion-score" style="color: #16a34a;">5/5</span>
+                    </div>
+                    <div class="criterion-comment">The agent recommended a review rather than making a decision, adhering to compliance requirements.</div>
+                </div>
+            </div>
+        </div>
+        <div class="case-card">
+            <div class="case-header">
+                <div class="case-id">FWA-2026-003</div>
+                <div class="case-name">Behavioral Health Session Volume Anomaly</div>
+                <div class="case-type">Billing for services not rendered / physically impossible session volume</div>
+            </div>
+            
+            <div class="provider-info">
+                <h3>Provider Information</h3>
+                <div class="info-grid">
+                    <div><strong>Provider:</strong> ClearMind Behavioral Health Clinic</div>
+                    <div><strong>Specialty:</strong> Outpatient Behavioral Health</div>
+                    <div><strong>Location:</strong> Richmond, VA</div>
+                    <div><strong>Prior Investigation:</strong> False</div>
+                </div>
+            </div>
+
+            <div class="core-anomaly">
+                <h3>Core Anomaly Identified</h3>
+                <p>The provider, ClearMind Behavioral Health Clinic, has billed an unusually high volume of individual psychotherapy sessions (90837) with a significant spike in sessions since January 15, 2026, exceeding peer averages by 275% and placing them in the 99th percentile among outpatient behavioral health providers in Richmond, VA.</p>
+            </div>
+
+            <div class="reasoning-section">
+                <h3>Investigation Reasoning Chain</h3>
+                
+            <div class="reasoning-step">
+                <div class="step-header">
+                    <span class="step-number">Step 1</span>
+                    <span class="step-check">Diagnosis code supports procedure</span>
+                </div>
+                <div class="step-finding"><strong>Finding:</strong> The diagnosis code F32.1 (Major depressive disorder, single episode, moderate) is clinically appropriate for individual psychotherapy (90837).</div>
+                <div class="step-significance"><strong>Significance:</strong> This supports the medical necessity of the procedure but does not explain the high volume of sessions.</div>
+            </div>
+            <div class="reasoning-step">
+                <div class="step-header">
+                    <span class="step-number">Step 2</span>
+                    <span class="step-check">Billing volume against peer benchmarks</span>
+                </div>
+                <div class="step-finding"><strong>Finding:</strong> The provider's billing volume is 275% above the peer average and has spiked by 310% since January 15, 2026.</div>
+                <div class="step-significance"><strong>Significance:</strong> This significant deviation from peer averages and the sudden increase in volume raises concerns about potential overbilling or improper billing practices.</div>
+            </div>
+            <div class="reasoning-step">
+                <div class="step-header">
+                    <span class="step-number">Step 3</span>
+                    <span class="step-check">Prior authorization compliance</span>
+                </div>
+                <div class="step-finding"><strong>Finding:</strong> Prior authorization is not required for this procedure, but the provider obtained it.</div>
+                <div class="step-significance"><strong>Significance:</strong> This indicates compliance with authorization requirements but does not address the volume anomaly.</div>
+            </div>
+            <div class="reasoning-step">
+                <div class="step-header">
+                    <span class="step-number">Step 4</span>
+                    <span class="step-check">Staffing and session volume feasibility</span>
+                </div>
+                <div class="step-finding"><strong>Finding:</strong> With 3 licensed clinicians on staff and a requirement of 15 sessions per clinician per day (60 minutes each), the billed 45 sessions per day exceeds feasible clinical capacity, considering both session time and required documentation time.</div>
+                <div class="step-significance"><strong>Significance:</strong> This suggests that the high volume of sessions billed may not be physically possible given standard working hours and required documentation time.</div>
+            </div>
+            <div class="reasoning-step">
+                <div class="step-header">
+                    <span class="step-number">Step 5</span>
+                    <span class="step-check">Documentation review</span>
+                </div>
+                <div class="step-finding"><strong>Finding:</strong> Only 40% of sessions have complete notes, with 27 sessions having missing notes.</div>
+                <div class="step-significance"><strong>Significance:</strong> The low rate of complete documentation raises concerns about the legitimacy and accuracy of the billed services.</div>
+            </div>
+            </div>
+
+            <div class="alternatives-section">
+                <h3>Alternative Explanations Considered</h3>
+                
+            <div class="alternative">
+                <div class="alt-explanation"><strong>Explanation considered:</strong> The provider may have recently expanded services or hired additional staff not reflected in the data.</div>
+                <div class="alt-assessment"><strong>Assessment:</strong> This does not explain the sudden spike in volume or the feasibility concerns given the current staffing levels and session documentation requirements.</div>
+            </div>
+            <div class="alternative">
+                <div class="alt-explanation"><strong>Explanation considered:</strong> There might have been an increase in patient demand in the area.</div>
+                <div class="alt-assessment"><strong>Assessment:</strong> While possible, this does not account for the extent of deviation from peer averages or the staffing and documentation concerns.</div>
+            </div>
+            <div class="alternative">
+                <div class="alt-explanation"><strong>Explanation considered:</strong> Billing errors or incorrect coding could explain the anomaly.</div>
+                <div class="alt-assessment"><strong>Assessment:</strong> The coding analysis indicates that diagnosis codes are clinically appropriate for the procedure, making this less likely as a primary explanation.</div>
+            </div>
+            </div>
+
+            <div class="evidence-section">
+                <h3>Key Evidence</h3>
+                <ul><li>Significant deviation from peer averages in billing volume</li><li>Feasibility concerns based on staffing and required clinical hours</li><li>Low documentation completion rate for billed sessions</li></ul>
+            </div>
+
+            <div class="confidence-section" style="border-left: 5px solid #dc2626;">
+                <div class="confidence-level" style="color: #dc2626;">
+                    HIGH SUSPICION
+                </div>
+                <div class="confidence-label">HIGH SUSPICION — Escalate to Full Investigation</div>
+                <div class="confidence-rationale">The combination of a significant billing volume spike, feasibility concerns based on staffing levels, and a low rate of complete session documentation strongly suggests potential improper billing practices.</div>
+            </div>
+
+            <div class="recommendation-section">
+                <h3>Recommended Action for SIU Analyst</h3>
+                <p class="recommendation">The SIU analyst should conduct a detailed review of patient records, staff schedules, and billing documentation to verify the legitimacy of the billed services and assess the need for further investigation or potential site visit.</p>
+                <p class="compliance-note">This case package is for investigative purposes only. All denial or referral decisions require human SIU analyst review.</p>
+            </div>
+
+            <div class="judge-section">
+                <h3>Quality Evaluation — LLM-as-Judge</h3>
+                <div class="judge-pass" style="color: #16a34a; border-color: #16a34a;">
+                    PASSES QUALITY THRESHOLD | Overall Score: 5/5
+                </div>
+                <p class="quality-note">The agent-produced case package demonstrates exceptional quality, with thorough reasoning, accurate evidence utilization, logical step sequencing, and strict compliance adherence.</p>
+                
+                <div class="judge-criterion">
+                    <div class="criterion-header">
+                        <span class="criterion-label">Reasoning Completeness</span>
+                        <span class="criterion-score" style="color: #16a34a;">5/5</span>
+                    </div>
+                    <div class="criterion-comment">The agent thoroughly examined all available evidence, including billing history, staffing data, coding analysis, and documentation review, to construct a comprehensive reasoning chain.</div>
+                </div>
+                <div class="judge-criterion">
+                    <div class="criterion-header">
+                        <span class="criterion-label">Evidence Accuracy</span>
+                        <span class="criterion-score" style="color: #16a34a;">5/5</span>
+                    </div>
+                    <div class="criterion-comment">The agent's findings are consistent with the data provided, accurately reflecting the significant deviation from peer averages, feasibility concerns, and documentation issues.</div>
+                </div>
+                <div class="judge-criterion">
+                    <div class="criterion-header">
+                        <span class="criterion-label">Step Sequencing</span>
+                        <span class="criterion-score" style="color: #16a34a;">5/5</span>
+                    </div>
+                    <div class="criterion-comment">The agent followed a logical investigation sequence, starting with the appropriateness of the diagnosis code, then comparing billing volume to peer benchmarks, assessing prior authorization compliance, evaluating staffing and session volume feasibility, and finally reviewing documentation completeness.</div>
+                </div>
+                <div class="judge-criterion">
+                    <div class="criterion-header">
+                        <span class="criterion-label">Compliance Adherence</span>
+                        <span class="criterion-score" style="color: #16a34a;">5/5</span>
+                    </div>
+                    <div class="criterion-comment">The agent recommended further review by a human SIU analyst rather than making a decision, adhering to compliance requirements and avoiding any presumption of guilt or innocence.</div>
+                </div>
+            </div>
+        </div>
+</div>
+
+<div class="footer">
+    <p>FWA Investigation Agent POC | Aryamani Boruah | Cotiviti Agentic AI Research Intern Assessment | June 2026</p>
+    <p>Synthetic cases based on documented fraud patterns. Not real provider data.</p>
+</div>
+
+</body>
+</html>

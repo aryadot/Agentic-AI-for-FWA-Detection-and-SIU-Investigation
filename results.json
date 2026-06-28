@@ -1,0 +1,382 @@
+[
+  {
+    "case": {
+      "case_id": "FWA-2026-001",
+      "case_name": "Wound Allograft Overbilling",
+      "fraud_type": "Billing for medically unnecessary services / diagnosis-procedure mismatch",
+      "source_reference": "Pattern consistent with DOJ June 2026 National Fraud Takedown - Wound Allograft Schemes",
+      "provider": {
+        "name": "Coastal Dermatology Associates",
+        "npi": "1234567890",
+        "specialty": "Dermatology",
+        "location": "Miami, FL",
+        "years_billing": 3,
+        "prior_investigation_flag": false
+      },
+      "flagged_claim": {
+        "procedure_code": "Q4121",
+        "procedure_description": "Amniotic wound allograft application",
+        "diagnosis_code": "S00.01XA",
+        "diagnosis_description": "Superficial abrasion of scalp, initial encounter",
+        "billed_amount": 14500.0,
+        "units_billed": 10,
+        "date_of_service": "2026-05-15",
+        "prior_authorization_obtained": false,
+        "prior_authorization_required": true
+      },
+      "billing_history": {
+        "allograft_procedures_last_90_days": 312,
+        "peer_average_allograft_procedures_last_90_days": 104,
+        "peer_deviation_percent": 200,
+        "billing_volume_spike_percent": 280,
+        "spike_start_date": "2026-02-01",
+        "avg_billed_per_procedure": 14200.0,
+        "peer_avg_billed_per_procedure": 3100.0
+      },
+      "coding_analysis": {
+        "diagnosis_supports_procedure": false,
+        "clinical_note": "Amniotic allografts are indicated for chronic non-healing wounds such as diabetic ulcers and venous leg ulcers. Superficial abrasions (S00.01XA) are minor injuries that heal without intervention and do not meet clinical criteria for allograft application.",
+        "upcoding_flag": true
+      },
+      "peer_comparison": {
+        "specialty": "Dermatology",
+        "geography": "Miami-Dade County, FL",
+        "peers_analyzed": 47,
+        "provider_percentile": 99
+      }
+    },
+    "agent_output": {
+      "case_id": "FWA-2026-001",
+      "case_name": "Wound Allograft Overbilling",
+      "core_anomaly": "The claim for procedure code Q4121 (Amniotic wound allograft application) on 2026-05-15 for $14,500.00 with diagnosis code S00.01XA (Superficial abrasion of scalp, initial encounter) significantly exceeds peer averages and lacks prior authorization.",
+      "reasoning_chain": [
+        {
+          "step": 1,
+          "check": "Diagnosis code supports procedure",
+          "finding": "False",
+          "significance": "The diagnosis code S00.01XA (Superficial abrasion of scalp, initial encounter) does not clinically support the application of an amniotic wound allograft (Q4121) as superficial abrasions are minor and typically heal without such interventions."
+        },
+        {
+          "step": 2,
+          "check": "Billing volume and peer comparison",
+          "finding": "The provider is in the 99th percentile for billing compared to peers in the same specialty and geography, with a 200% deviation above the peer average and a 280% increase in volume since 2026-02-01.",
+          "significance": "This indicates a significant deviation from expected billing patterns, suggesting potential overbilling."
+        },
+        {
+          "step": 3,
+          "check": "Prior authorization",
+          "finding": "Prior authorization was required but not obtained.",
+          "significance": "Lack of prior authorization raises concerns about the legitimacy of the billing process."
+        }
+      ],
+      "alternative_explanations_considered": [
+        {
+          "explanation": "Unusual patient condition",
+          "assessment": "While possible, there is no evidence provided that the patient's condition was unusually severe or complex to justify the use of an allograft for a superficial abrasion."
+        },
+        {
+          "explanation": "Billing error or coding mistake",
+          "assessment": "The significant deviation from peer averages and the specific lack of clinical support for the procedure suggest that this is more than a simple error."
+        },
+        {
+          "explanation": "Educational or training purposes",
+          "assessment": "There is no indication that the procedure was part of an educational or training program, and such activities would typically have clear documentation and oversight."
+        }
+      ],
+      "key_evidence": [
+        "Diagnosis code S00.01XA does not support the medical necessity of procedure Q4121.",
+        "Significant deviation from peer billing averages (200% above) and volume spike (280% increase).",
+        "Lack of prior authorization for the procedure."
+      ],
+      "confidence_level": "HIGH",
+      "confidence_rationale": "The combination of a significant billing deviation, lack of clinical support for the procedure, and absence of prior authorization strongly suggests potential fraud or abuse.",
+      "recommended_action": "The SIU analyst should request additional documentation from Coastal Dermatology Associates, including medical records supporting the necessity of the allograft application for the patient's condition, and investigate further to determine if there was a legitimate reason for the deviation from standard billing practices.",
+      "compliance_note": "This case package is for investigative purposes only. All denial or referral decisions require human SIU analyst review."
+    },
+    "judge_output": {
+      "case_id": "FWA-2026-001",
+      "reasoning_completeness": {
+        "score": 5,
+        "comment": "The agent thoroughly examined all available evidence, including diagnosis codes, billing history, peer comparisons, and prior authorization status. The reasoning chain is comprehensive and clearly articulated."
+      },
+      "evidence_accuracy": {
+        "score": 5,
+        "comment": "The agent's findings are consistent with the data provided. The agent accurately identified the deviation from peer averages, the lack of clinical support for the procedure given the diagnosis, and the absence of prior authorization."
+      },
+      "step_sequencing": {
+        "score": 5,
+        "comment": "The agent followed a logical investigation sequence, starting with assessing the clinical support for the procedure, then evaluating billing patterns and deviations from peer averages, and finally considering alternative explanations and required actions."
+      },
+      "compliance_adherence": {
+        "score": 5,
+        "comment": "The agent recommended further investigation and documentation request rather than making a definitive decision, adhering to compliance requirements and the role of an investigative tool."
+      },
+      "overall_score": 5,
+      "passes_quality_threshold": true,
+      "quality_note": "The case package produced by the investigation agent demonstrates thorough and accurate analysis, logical sequencing, and adherence to compliance requirements, indicating a high-quality investigation."
+    }
+  },
+  {
+    "case": {
+      "case_id": "FWA-2026-002",
+      "case_name": "Complex E&M Upcoding - False Positive",
+      "fraud_type": "Suspected upcoding - high complexity evaluation and management codes",
+      "source_reference": "Pattern consistent with Bluestone Physician Services $14.9M settlement - E&M upcoding",
+      "provider": {
+        "name": "Northside Internal Medicine Group",
+        "npi": "9876543210",
+        "specialty": "Internal Medicine",
+        "location": "Rural Appalachian Kentucky",
+        "years_billing": 12,
+        "prior_investigation_flag": false
+      },
+      "flagged_claim": {
+        "procedure_code": "99205",
+        "procedure_description": "Office visit - new patient, high medical decision complexity",
+        "diagnosis_code": "E11.65",
+        "diagnosis_description": "Type 2 diabetes with hyperglycemia, with multiple comorbidities",
+        "billed_amount": 320.0,
+        "units_billed": 1,
+        "date_of_service": "2026-05-20",
+        "prior_authorization_obtained": true,
+        "prior_authorization_required": true
+      },
+      "billing_history": {
+        "high_complexity_em_percent": 78,
+        "peer_average_high_complexity_em_percent": 35,
+        "peer_deviation_percent": 123,
+        "billing_volume_spike_percent": 0,
+        "spike_start_date": null,
+        "avg_billed_per_visit": 298.0,
+        "peer_avg_billed_per_visit": 187.0
+      },
+      "coding_analysis": {
+        "diagnosis_supports_procedure": true,
+        "clinical_note": "Patient population consists of 84% Medicare beneficiaries with multiple chronic conditions including Type 2 diabetes, COPD, heart failure, and CKD. High complexity E&M coding is clinically appropriate for patients presenting with 3 or more chronic conditions requiring active management. Diagnosis codes submitted across the flagged claims are consistent with the complexity level billed.",
+        "upcoding_flag": false
+      },
+      "peer_comparison": {
+        "specialty": "Internal Medicine",
+        "geography": "Rural Appalachian Kentucky",
+        "peers_analyzed": 12,
+        "provider_percentile": 91
+      },
+      "contextual_factors": {
+        "rural_designation": "Health Professional Shortage Area (HPSA)",
+        "patient_acuity_index": "High - 84% Medicare, avg 4.2 chronic conditions per patient",
+        "solo_practice": true,
+        "note": "Rural HPSA designation with limited peer providers. High acuity patient population is documented and consistent with elevated complexity billing."
+      }
+    },
+    "agent_output": {
+      "case_id": "FWA-2026-002",
+      "case_name": "Complex E&M Upcoding - False Positive",
+      "core_anomaly": "The claim for procedure code 99205 (Office visit - new patient, high medical decision complexity) on 2026-05-20 for $320.00 was flagged for potential upcoding.",
+      "reasoning_chain": [
+        {
+          "step": 1,
+          "check": "Whether the diagnosis codes clinically support the procedures billed",
+          "finding": "The diagnosis code E11.65 (Type 2 diabetes with hyperglycemia, with multiple comorbidities) supports the high complexity E&M coding given the patient's multiple chronic conditions.",
+          "significance": "The patient's condition justifies the billed complexity level."
+        },
+        {
+          "step": 2,
+          "check": "Billing volume against peer benchmarks",
+          "finding": "The provider's billing average of $298.00 is 123% above the peer average of $187.00, placing them in the 91st percentile among internal medicine peers in Rural Appalachian Kentucky.",
+          "significance": "This deviation suggests potential overbilling but could be justified by patient acuity and rural HPSA designation."
+        },
+        {
+          "step": 3,
+          "check": "Prior authorization compliance",
+          "finding": "Prior authorization was obtained for the procedure.",
+          "significance": "This indicates compliance with authorization requirements."
+        }
+      ],
+      "alternative_explanations_considered": [
+        {
+          "explanation": "The high billing rate is justified by the high acuity of the patient population, with 84% being Medicare beneficiaries with multiple chronic conditions.",
+          "assessment": "This explanation is plausible given the documented high acuity of patients and the rural HPSA designation."
+        },
+        {
+          "explanation": "The provider's experience and the complexity of cases managed justify the higher billing.",
+          "assessment": "This could be a legitimate factor given the provider's 12 years of billing experience and the clinical appropriateness of the coding."
+        }
+      ],
+      "key_evidence": [
+        "The patient's multiple chronic conditions (Type 2 diabetes, COPD, heart failure, and CKD) support the high complexity E&M coding.",
+        "The provider's practice is in a rural HPSA with limited peer providers, which could justify higher billing due to patient acuity and access issues."
+      ],
+      "confidence_level": "LOW",
+      "confidence_rationale": "The evidence suggests that the flagged claim may not be an instance of upcoding but rather a justified billing given the patient's high acuity and the provider's practice context.",
+      "recommended_action": "Review the claim in the context of the patient's medical record and the provider's billing patterns to confirm the legitimacy of the billing.",
+      "compliance_note": "This case package is for investigative purposes only. All denial or referral decisions require human SIU analyst review."
+    },
+    "judge_output": {
+      "case_id": "FWA-2026-002",
+      "reasoning_completeness": {
+        "score": 5,
+        "comment": "The agent considered all available evidence, including patient acuity, billing history, and peer comparisons, to evaluate the claim."
+      },
+      "evidence_accuracy": {
+        "score": 5,
+        "comment": "The agent's findings are consistent with the data provided, accurately reflecting the patient's conditions, billing patterns, and practice context."
+      },
+      "step_sequencing": {
+        "score": 5,
+        "comment": "The agent followed a logical investigation sequence, starting with clinical support, then billing volume, and finally prior authorization compliance."
+      },
+      "compliance_adherence": {
+        "score": 5,
+        "comment": "The agent recommended a review rather than making a decision, adhering to compliance requirements."
+      },
+      "overall_score": 5,
+      "passes_quality_threshold": true,
+      "quality_note": "The agent produced a thorough and accurate case package that adheres to investigative standards and compliance requirements."
+    }
+  },
+  {
+    "case": {
+      "case_id": "FWA-2026-003",
+      "case_name": "Behavioral Health Session Volume Anomaly",
+      "fraud_type": "Billing for services not rendered / physically impossible session volume",
+      "source_reference": "Pattern consistent with DOJ June 2026 Takedown - behavioral health billing fraud ($49M Virginia scheme)",
+      "provider": {
+        "name": "ClearMind Behavioral Health Clinic",
+        "npi": "5556667770",
+        "specialty": "Outpatient Behavioral Health",
+        "location": "Richmond, VA",
+        "years_billing": 2,
+        "prior_investigation_flag": false
+      },
+      "flagged_claim": {
+        "procedure_code": "90837",
+        "procedure_description": "Individual psychotherapy, 60 minutes",
+        "diagnosis_code": "F32.1",
+        "diagnosis_description": "Major depressive disorder, single episode, moderate",
+        "billed_amount": 175.0,
+        "units_billed": 45,
+        "date_of_service": "2026-05-10",
+        "prior_authorization_obtained": true,
+        "prior_authorization_required": false
+      },
+      "billing_history": {
+        "avg_daily_sessions_billed": 45,
+        "peer_average_daily_sessions": 12,
+        "peer_deviation_percent": 275,
+        "billing_volume_spike_percent": 310,
+        "spike_start_date": "2026-01-15",
+        "avg_billed_per_session": 175.0,
+        "peer_avg_billed_per_session": 162.0
+      },
+      "staffing_data": {
+        "licensed_clinicians_on_staff": 3,
+        "sessions_per_clinician_required": 15,
+        "session_duration_minutes": 60,
+        "required_hours_per_clinician_per_day": 15,
+        "documentation_time_per_session_minutes": 15,
+        "total_hours_required_per_clinician": 18.75,
+        "hours_in_working_day": 8,
+        "physically_possible": false
+      },
+      "coding_analysis": {
+        "diagnosis_supports_procedure": true,
+        "clinical_note": "Diagnosis codes are clinically appropriate for individual psychotherapy. The anomaly is in session volume, not coding accuracy.",
+        "upcoding_flag": false,
+        "volume_fraud_flag": true
+      },
+      "documentation_review": {
+        "sessions_with_complete_notes": 18,
+        "sessions_with_missing_notes": 27,
+        "note_completion_rate_percent": 40
+      },
+      "peer_comparison": {
+        "specialty": "Outpatient Behavioral Health",
+        "geography": "Richmond, VA Metro",
+        "peers_analyzed": 23,
+        "provider_percentile": 99
+      }
+    },
+    "agent_output": {
+      "case_id": "FWA-2026-003",
+      "case_name": "Behavioral Health Session Volume Anomaly",
+      "core_anomaly": "The provider, ClearMind Behavioral Health Clinic, has billed an unusually high volume of individual psychotherapy sessions (90837) with a significant spike in sessions since January 15, 2026, exceeding peer averages by 275% and placing them in the 99th percentile among outpatient behavioral health providers in Richmond, VA.",
+      "reasoning_chain": [
+        {
+          "step": 1,
+          "check": "Diagnosis code supports procedure",
+          "finding": "The diagnosis code F32.1 (Major depressive disorder, single episode, moderate) is clinically appropriate for individual psychotherapy (90837).",
+          "significance": "This supports the medical necessity of the procedure but does not explain the high volume of sessions."
+        },
+        {
+          "step": 2,
+          "check": "Billing volume against peer benchmarks",
+          "finding": "The provider's billing volume is 275% above the peer average and has spiked by 310% since January 15, 2026.",
+          "significance": "This significant deviation from peer averages and the sudden increase in volume raises concerns about potential overbilling or improper billing practices."
+        },
+        {
+          "step": 3,
+          "check": "Prior authorization compliance",
+          "finding": "Prior authorization is not required for this procedure, but the provider obtained it.",
+          "significance": "This indicates compliance with authorization requirements but does not address the volume anomaly."
+        },
+        {
+          "step": 4,
+          "check": "Staffing and session volume feasibility",
+          "finding": "With 3 licensed clinicians on staff and a requirement of 15 sessions per clinician per day (60 minutes each), the billed 45 sessions per day exceeds feasible clinical capacity, considering both session time and required documentation time.",
+          "significance": "This suggests that the high volume of sessions billed may not be physically possible given standard working hours and required documentation time."
+        },
+        {
+          "step": 5,
+          "check": "Documentation review",
+          "finding": "Only 40% of sessions have complete notes, with 27 sessions having missing notes.",
+          "significance": "The low rate of complete documentation raises concerns about the legitimacy and accuracy of the billed services."
+        }
+      ],
+      "alternative_explanations_considered": [
+        {
+          "explanation": "The provider may have recently expanded services or hired additional staff not reflected in the data.",
+          "assessment": "This does not explain the sudden spike in volume or the feasibility concerns given the current staffing levels and session documentation requirements."
+        },
+        {
+          "explanation": "There might have been an increase in patient demand in the area.",
+          "assessment": "While possible, this does not account for the extent of deviation from peer averages or the staffing and documentation concerns."
+        },
+        {
+          "explanation": "Billing errors or incorrect coding could explain the anomaly.",
+          "assessment": "The coding analysis indicates that diagnosis codes are clinically appropriate for the procedure, making this less likely as a primary explanation."
+        }
+      ],
+      "key_evidence": [
+        "Significant deviation from peer averages in billing volume",
+        "Feasibility concerns based on staffing and required clinical hours",
+        "Low documentation completion rate for billed sessions"
+      ],
+      "confidence_level": "HIGH",
+      "confidence_rationale": "The combination of a significant billing volume spike, feasibility concerns based on staffing levels, and a low rate of complete session documentation strongly suggests potential improper billing practices.",
+      "recommended_action": "The SIU analyst should conduct a detailed review of patient records, staff schedules, and billing documentation to verify the legitimacy of the billed services and assess the need for further investigation or potential site visit.",
+      "compliance_note": "This case package is for investigative purposes only. All denial or referral decisions require human SIU analyst review."
+    },
+    "judge_output": {
+      "case_id": "FWA-2026-003",
+      "reasoning_completeness": {
+        "score": 5,
+        "comment": "The agent thoroughly examined all available evidence, including billing history, staffing data, coding analysis, and documentation review, to construct a comprehensive reasoning chain."
+      },
+      "evidence_accuracy": {
+        "score": 5,
+        "comment": "The agent's findings are consistent with the data provided, accurately reflecting the significant deviation from peer averages, feasibility concerns, and documentation issues."
+      },
+      "step_sequencing": {
+        "score": 5,
+        "comment": "The agent followed a logical investigation sequence, starting with the appropriateness of the diagnosis code, then comparing billing volume to peer benchmarks, assessing prior authorization compliance, evaluating staffing and session volume feasibility, and finally reviewing documentation completeness."
+      },
+      "compliance_adherence": {
+        "score": 5,
+        "comment": "The agent recommended further review by a human SIU analyst rather than making a decision, adhering to compliance requirements and avoiding any presumption of guilt or innocence."
+      },
+      "overall_score": 5,
+      "passes_quality_threshold": true,
+      "quality_note": "The agent-produced case package demonstrates exceptional quality, with thorough reasoning, accurate evidence utilization, logical step sequencing, and strict compliance adherence."
+    }
+  }
+]
