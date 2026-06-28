@@ -153,10 +153,10 @@ fwa_poc/
 ---
 ## Tools Used
 
-Model: Llama 4 Scout via Groq — LLM reasoning agent and LLM-as-Judge evaluation layer
-Language: Python 3.11
 Synthetic Data: Generated with Claude to represent realistic FWA investigation scenarios grounded in real fraud patterns
-Output: Structured JSON case packages rendered as an HTML visual report
+
+Readme: Generated using claude
+
 
 ## References
 
