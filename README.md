@@ -16,11 +16,21 @@ This agent automates that initial investigative triage. The SIU analyst receives
 
 Cases are grounded in real documented fraud patterns from the DOJ June 2026 National Health Care Fraud Takedown and HHS/CMS published fraud typologies.
 
-| Case ID | Pattern | Agent Output |
-|---------|---------|--------------|
-| FWA-2026-001 | Wound allograft overbilling — diagnosis-procedure mismatch, no prior authorization, 200% peer deviation | HIGH suspicion → Escalate to full SIU investigation |
-| FWA-2026-002 | E&M upcoding — flagged for high complexity billing, resolved by rural high-acuity patient population | LOW suspicion → Close flag, anomaly explained |
-| FWA-2026-003 | Behavioral health billing 45 sessions per day with 3 clinicians on staff — mathematically impossible | MEDIUM suspicion → Targeted follow-up before escalating |
+FWA-2026-001 — Wound Allograft Overbilling
+
+A dermatology provider billing amniotic wound allograft procedures against a superficial abrasion diagnosis. Allografts are indicated for chronic non-healing wounds, not minor surface injuries. Billing volume 200 percent above specialty and geography peers, 280 percent volume spike in 90 days, no prior authorization obtained. Grounded in the DOJ June 2026 Takedown where a single allograft scheme generated over $4 billion in false Medicare claims.
+
+Expected outcome: HIGH suspicion. Escalate to full investigation.
+FWA-2026-002 — E&M Upcoding False Positive
+
+An internal medicine provider billing 78 percent of visits at the highest complexity level against a peer average of 35 percent. The anomaly is real but the explanation is legitimate. This provider operates in a rural health professional shortage area serving a Medicare population with an average of 4.2 chronic conditions per patient. High complexity coding is clinically appropriate for that patient population. Grounded in the Bluestone Physician Services $14.9 million E&M upcoding settlement.
+
+Expected outcome: LOW suspicion. Close flag, anomaly explained by patient population.
+FWA-2026-003 — Behavioral Health Session Volume
+
+A behavioral health clinic billing 45 therapy sessions per day with 3 licensed clinicians on staff. 45 sessions divided by 3 clinicians equals 15 sessions each. At 60 minutes per session plus 15 minutes documentation that is 18.75 hours required per clinician per day against an 8 hour working day. Physically impossible. Documentation completeness rate is 40 percent. Grounded in the DOJ June 2026 Takedown where a behavioral health provider billed over 500 hours of counseling per day.
+
+Expected outcome: HIGH suspicion. Escalate to full investigation.
 
 Case 3 is the strongest demonstration of chain reasoning. The agent works through the arithmetic explicitly: 45 sessions divided by 3 clinicians equals 15 sessions each, at 60 minutes per session plus 15 minutes documentation equals 18.75 hours required per clinician against an 8-hour working day. Physically impossible. The agent identifies this, documents it, and recommends targeted record requests before escalation.
 
@@ -141,6 +151,12 @@ fwa_poc/
 ```
 
 ---
+## Tools Used
+
+Model: Llama 4 Scout via Groq — LLM reasoning agent and LLM-as-Judge evaluation layer
+Language: Python 3.11
+Synthetic Data: Generated with Claude to represent realistic FWA investigation scenarios grounded in real fraud patterns
+Output: Structured JSON case packages rendered as an HTML visual report
 
 ## References
 
