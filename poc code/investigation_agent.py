@@ -1,9 +1,6 @@
 """
 FWA Investigation Agent
-Uses Llama 4 Scout via Groq to autonomously reason through flagged claims
-and produce structured investigation-ready case packages for SIU analysts.
 
-The agent recommends — the human decides.
 """
 
 import os
