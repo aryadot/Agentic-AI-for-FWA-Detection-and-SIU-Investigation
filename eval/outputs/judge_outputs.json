@@ -1,0 +1,1002 @@
+{
+  "clean:EVAL-16": {
+    "reasoning_completeness": {
+      "score": 4,
+      "comment": "The agent addressed the main evidence (billing jump, unchanged staff, online scheduling, remote patients) and considered clinical appropriateness and alternative explanations, though it omitted minor details like years billing and prior authorization status."
+    },
+    "evidence_accuracy": {
+      "score": 5,
+      "comment": "All computed figures (increase amount, percent increase, per\u2011clinician averages) match the source data, and the narrative findings are consistent with the provided evidence."
+    },
+    "step_sequencing": {
+      "score": 5,
+      "comment": "The investigation follows a logical flow: anomaly detection, clinical review, peer/context comparison, and exploration of plausible explanations."
+    },
+    "compliance_adherence": {
+      "score": 5,
+      "comment": "The agent issues a request for additional records rather than rendering a definitive fraud determination, adhering to compliance guidelines."
+    },
+    "overall_score": 4.75,
+    "passes_quality_threshold": true
+  },
+  "clean:EVAL-10": {
+    "reasoning_completeness": {
+      "score": 5,
+      "comment": "The agent addressed every piece of supplied evidence, including staffing, session length, documentation time, peer benchmarks, and contextual notes, and also explored alternative explanations."
+    },
+    "evidence_accuracy": {
+      "score": 5,
+      "comment": "All computed figures (sessions per clinician, max possible sessions, peer gap percent) match the raw data, and the qualitative findings correctly reflect the evidence."
+    },
+    "step_sequencing": {
+      "score": 5,
+      "comment": "The investigation follows a logical flow\u2014from capacity assessment to documentation adequacy, clinical appropriateness, peer comparison, and contextual factors\u2014mirroring a sound analytical process."
+    },
+    "compliance_adherence": {
+      "score": 5,
+      "comment": "The agent issues a recommendation to request additional records rather than rendering a definitive claim decision, fully adhering to compliance guidelines."
+    },
+    "overall_score": 5,
+    "passes_quality_threshold": true
+  },
+  "clean:EVAL-07": {
+    "reasoning_completeness": {
+      "score": 5,
+      "comment": "The agent considered all provided evidence, including capacity, billed volume, peer benchmark, clinical appropriateness, prior authorization, and explored plausible alternative explanations."
+    },
+    "evidence_accuracy": {
+      "score": 5,
+      "comment": "All computed figures (max sessions, overage, utilization rate, peer multiplier) correctly reflect the source data, and the clinical and prior\u2011auth assessments are accurate."
+    },
+    "step_sequencing": {
+      "score": 5,
+      "comment": "The investigation follows a logical progression: capacity assessment \u2192 billed volume comparison \u2192 peer benchmark \u2192 clinical check \u2192 prior\u2011auth check, then alternative explanations."
+    },
+    "compliance_adherence": {
+      "score": 2,
+      "comment": "The agent issued a definitive decision ('ESCALATE') rather than solely recommending further review, which deviates from the guideline to recommend actions instead of deciding."
+    },
+    "overall_score": 4.25,
+    "passes_quality_threshold": true
+  },
+  "clean:EVAL-12": {
+    "reasoning_completeness": {
+      "score": 5,
+      "comment": "The agent addressed every data point\u2014visit share, peer benchmark, chronic condition count, risk score, and practice context\u2014while also exploring alternative explanations."
+    },
+    "evidence_accuracy": {
+      "score": 5,
+      "comment": "All calculated figures (40\u2011point difference, 2.29 ratio) and cited metrics match the original data without error."
+    },
+    "step_sequencing": {
+      "score": 5,
+      "comment": "The investigation follows a logical flow: anomaly detection, clinical justification check, peer comparison, and contextual assessment."
+    },
+    "compliance_adherence": {
+      "score": 5,
+      "comment": "The agent issues a recommendation to obtain records rather than rendering a definitive fraud determination."
+    },
+    "overall_score": 5,
+    "passes_quality_threshold": true
+  },
+  "clean:EVAL-02": {
+    "reasoning_completeness": {
+      "score": 5,
+      "comment": "The agent addressed every piece of supplied data, including volume metrics, diagnosis relevance, prior\u2011authorization status, peer context, and considered alternative explanations."
+    },
+    "evidence_accuracy": {
+      "score": 5,
+      "comment": "All computed figures (ratios, differences, daily rates) match the original numbers, and the findings about diagnosis and prior\u2011auth align with the case data."
+    },
+    "step_sequencing": {
+      "score": 5,
+      "comment": "The investigation follows a logical flow: detect volume anomaly, evaluate clinical justification, check compliance (prior auth), then contextual peer comparison, culminating in a decision rationale."
+    },
+    "compliance_adherence": {
+      "score": 5,
+      "comment": "The agent issues a recommendation to escalate and request further audit rather than rendering a final claim adjudication, satisfying compliance expectations."
+    },
+    "overall_score": 5,
+    "passes_quality_threshold": true
+  },
+  "clean:EVAL-20": {
+    "reasoning_completeness": {
+      "score": 4,
+      "comment": "The agent addressed the main data points\u2014billing jump, clinician count, procedure appropriateness, and missing staffing info\u2014but did not explicitly reference provider tenure or prior\u2011authorization details, which are minor omissions."
+    },
+    "evidence_accuracy": {
+      "score": 4,
+      "comment": "Calculated increase and percent rise are correct; however the average before\u2011per\u2011clinician figure is slightly off ($13,527.25 vs $13,526.75). All other figures match the source data."
+    },
+    "step_sequencing": {
+      "score": 5,
+      "comment": "The reasoning follows a clear, logical progression from anomaly identification through quantification, clinical validation, benchmarking, and exploration of alternative explanations."
+    },
+    "compliance_adherence": {
+      "score": 5,
+      "comment": "The agent issues a request for additional records rather than rendering a definitive fraud determination, fully adhering to the recommendation\u2011only guidance."
+    },
+    "overall_score": 4.5,
+    "passes_quality_threshold": true
+  },
+  "clean:EVAL-09": {
+    "reasoning_completeness": {
+      "score": 5,
+      "comment": "The agent addressed all provided data points, including capacity, clinical appropriateness, peer benchmarks, documentation time, and considered multiple alternative explanations."
+    },
+    "evidence_accuracy": {
+      "score": 5,
+      "comment": "All computed figures (sessions per clinician, max possible sessions, utilization ratio, documentation minutes) match the source data and calculations are correct."
+    },
+    "step_sequencing": {
+      "score": 5,
+      "comment": "The investigation follows a logical flow from capacity analysis to clinical justification, peer comparison, and documentation adequacy, culminating in alternative explanations."
+    },
+    "compliance_adherence": {
+      "score": 5,
+      "comment": "The agent issues a recommendation to request additional records rather than making a final adjudication, complying with the required advisory role."
+    },
+    "overall_score": 5,
+    "passes_quality_threshold": true
+  },
+  "clean:EVAL-18": {
+    "reasoning_completeness": {
+      "score": 5,
+      "comment": "The agent considered all pertinent data\u2014billing amounts, clinician counts, merger context, prior\u2011authorization rules, and potential upcoding\u2014providing a thorough analysis."
+    },
+    "evidence_accuracy": {
+      "score": 4,
+      "comment": "Calculated increase amount and overall percent increase are spot\u2011on. Per\u2011clinician after figure is slightly off (should be $17,083.67 vs $17,084.78), causing a minor discrepancy."
+    },
+    "step_sequencing": {
+      "score": 5,
+      "comment": "The investigation follows a logical progression from anomaly identification through clinical appropriateness, peer comparison, contextual justification, and red\u2011flag assessment."
+    },
+    "compliance_adherence": {
+      "score": 1,
+      "comment": "The agent issued a definitive decision (CLOSE) instead of merely recommending further action, contrary to the requirement to recommend rather than decide."
+    },
+    "overall_score": 3.75,
+    "passes_quality_threshold": false
+  },
+  "clean:EVAL-15": {
+    "reasoning_completeness": {
+      "score": 5,
+      "comment": "The agent addressed every piece of supplied data, including provider details, claim specifics, evidence percentages, and contextual notes, and provided a thorough analysis and next steps."
+    },
+    "evidence_accuracy": {
+      "score": 5,
+      "comment": "All calculated figures (62%, 34%, ratio 1.82, 28\u2011point difference) match the original data, and the clinical and procedural interpretations are consistent with the provided information."
+    },
+    "step_sequencing": {
+      "score": 5,
+      "comment": "The investigation follows a logical progression: anomaly identification, quantitative computation, clinical plausibility assessment, peer benchmark comparison, and exploration of alternative explanations."
+    },
+    "compliance_adherence": {
+      "score": 5,
+      "comment": "The agent issues a recommendation to request records rather than a definitive fraud finding, aligning with compliance requirements."
+    },
+    "overall_score": 5,
+    "passes_quality_threshold": true
+  },
+  "clean:EVAL-19": {
+    "reasoning_completeness": {
+      "score": 4,
+      "comment": "The agent addressed all supplied data, identified the billing jump, evaluated clinical appropriateness, and considered peer benchmarks, while noting missing staffing context."
+    },
+    "evidence_accuracy": {
+      "score": 5,
+      "comment": "All computed figures (increase amount, percent increase, per\u2011clinician averages) match the original numbers exactly."
+    },
+    "step_sequencing": {
+      "score": 4,
+      "comment": "The investigation follows a logical order\u2014anomaly detection, clinical validation, peer comparison\u2014and acknowledges data gaps, though a claim\u2011level verification step could be added."
+    },
+    "compliance_adherence": {
+      "score": 5,
+      "comment": "The agent issues a request for additional records rather than a definitive finding, adhering to compliance guidelines."
+    },
+    "overall_score": 4.5,
+    "passes_quality_threshold": true
+  },
+  "clean:EVAL-01": {
+    "reasoning_completeness": {
+      "score": 5,
+      "comment": "The agent addressed all data points, including volume, diagnosis relevance, prior\u2011auth status, peer comparison, contextual factors, and alternative explanations."
+    },
+    "evidence_accuracy": {
+      "score": 5,
+      "comment": "All figures (344 procedures, peer mean 100, ratio 3.44, excess 244) and findings match the original case data."
+    },
+    "step_sequencing": {
+      "score": 5,
+      "comment": "The investigation steps follow a logical order from volume anomaly to clinical appropriateness, compliance, peer benchmarking, and contextual assessment."
+    },
+    "compliance_adherence": {
+      "score": 5,
+      "comment": "The agent provides a recommendation to escalate for further investigation rather than a final adjudication."
+    },
+    "overall_score": 5,
+    "passes_quality_threshold": true
+  },
+  "clean:EVAL-14": {
+    "reasoning_completeness": {
+      "score": 5,
+      "comment": "The agent addressed every data point\u2014visit share, peer benchmark, chronic condition count, risk score, and practice context\u2014through a structured reasoning chain and alternative explanations."
+    },
+    "evidence_accuracy": {
+      "score": 5,
+      "comment": "All computed figures (75%, 35%, 40\u2011point difference, 2.14 ratio) match the source data, and the clinical details cited are accurate."
+    },
+    "step_sequencing": {
+      "score": 5,
+      "comment": "The investigation follows a logical progression: anomaly identification, clinical validation, peer comparison, contextual assessment, and consideration of legitimate explanations before concluding."
+    },
+    "compliance_adherence": {
+      "score": 5,
+      "comment": "The agent issues a recommendation to request records rather than making a definitive payment decision, adhering to compliance guidelines."
+    },
+    "overall_score": 5,
+    "passes_quality_threshold": true
+  },
+  "clean:EVAL-11": {
+    "reasoning_completeness": {
+      "score": 5,
+      "comment": "The agent incorporated all key data points\u2014visit share, peer benchmark, diagnosis relevance, panel risk metrics, and contextual staff turnover\u2014into a thorough analysis."
+    },
+    "evidence_accuracy": {
+      "score": 5,
+      "comment": "All computed figures (71%, 33%, 38% difference, 2.15 ratio, 1.1 chronic conditions, 0.81 risk score) exactly match the original data, and findings are consistent."
+    },
+    "step_sequencing": {
+      "score": 5,
+      "comment": "The investigation follows a logical flow: identify anomaly, assess clinical justification, evaluate patient risk, compare to peers, then consider operational factors."
+    },
+    "compliance_adherence": {
+      "score": 5,
+      "comment": "The agent issues a recommendation to obtain additional records rather than rendering a definitive fraud determination."
+    },
+    "overall_score": 5,
+    "passes_quality_threshold": true
+  },
+  "clean:EVAL-04": {
+    "reasoning_completeness": {
+      "score": 4,
+      "comment": "The agent addressed the main evidence\u2014procedure volume, diagnosis, prior authorization, and context\u2014though it omitted minor details like provider tenure, still overall thorough."
+    },
+    "evidence_accuracy": {
+      "score": 5,
+      "comment": "All numeric calculations (procedure counts, ratios, daily rates) and factual statements match the original data."
+    },
+    "step_sequencing": {
+      "score": 5,
+      "comment": "The investigation follows a logical order from volume assessment to clinical justification and exploration of alternative explanations."
+    },
+    "compliance_adherence": {
+      "score": 5,
+      "comment": "The agent issues a request for additional records rather than a definitive claim decision, complying with recommendation\u2011only guidance."
+    },
+    "overall_score": 4.75,
+    "passes_quality_threshold": true
+  },
+  "clean:EVAL-17": {
+    "reasoning_completeness": {
+      "score": 5,
+      "comment": "The agent addressed every piece of supplied evidence, including billing spikes, unchanged staffing, patient distance, and software change, and explored plausible explanations."
+    },
+    "evidence_accuracy": {
+      "score": 5,
+      "comment": "All computed percentages and per\u2011clinician figures match the raw numbers; findings are consistent with the original data."
+    },
+    "step_sequencing": {
+      "score": 5,
+      "comment": "The investigation follows a logical flow from quantifying the anomaly to checking staffing, clinical validity, geographic patterns, and potential system errors."
+    },
+    "compliance_adherence": {
+      "score": 5,
+      "comment": "The agent issues a recommendation to request additional records rather than rendering a definitive fraud verdict."
+    },
+    "overall_score": 5,
+    "passes_quality_threshold": true
+  },
+  "clean:EVAL-06": {
+    "reasoning_completeness": {
+      "score": 5,
+      "comment": "The agent considered all supplied evidence, performed capacity analysis, peer comparison, clinical appropriateness, documentation impact, and evaluated plausible alternative explanations."
+    },
+    "evidence_accuracy": {
+      "score": 5,
+      "comment": "All computed figures (max sessions, excess, per\u2011clinician count, ratio to peer) match the raw data; no numerical errors detected."
+    },
+    "step_sequencing": {
+      "score": 5,
+      "comment": "The investigation follows a logical order: capacity calculation \u2192 volume check \u2192 peer benchmark \u2192 clinical relevance \u2192 documentation impact, then alternative explanations."
+    },
+    "compliance_adherence": {
+      "score": 5,
+      "comment": "The output recommends escalation rather than issuing a definitive adjudication, complying with the required recommendation\u2011only approach."
+    },
+    "overall_score": 5,
+    "passes_quality_threshold": true
+  },
+  "clean:EVAL-03": {
+    "reasoning_completeness": {
+      "score": 4,
+      "comment": "The agent addressed most of the supplied evidence, including volume, diagnosis, prior\u2011auth, and referral context, but omitted discussion of front\u2011desk staff turnover which could affect documentation quality."
+    },
+    "evidence_accuracy": {
+      "score": 5,
+      "comment": "All quantitative figures (procedure counts, ratios, daily averages) and qualitative findings (diagnosis match, prior\u2011auth status) align precisely with the original data."
+    },
+    "step_sequencing": {
+      "score": 5,
+      "comment": "The investigation follows a logical progression from anomaly detection to clinical justification, compliance check, contextual comparison, and exploration of legitimate drivers."
+    },
+    "compliance_adherence": {
+      "score": 5,
+      "comment": "The agent issues a recommendation to request records rather than making a final coverage decision, adhering to compliance guidelines."
+    },
+    "overall_score": 4.8,
+    "passes_quality_threshold": true
+  },
+  "clean:EVAL-05": {
+    "reasoning_completeness": {
+      "score": 4,
+      "comment": "The agent addressed the volume anomaly, clinical appropriateness, peer comparison, and missing documentation of conservative care, covering all key evidence provided."
+    },
+    "evidence_accuracy": {
+      "score": 5,
+      "comment": "All calculated figures (ratio 2.34, 134.5% above peer mean) and statements about prior authorization match the original data."
+    },
+    "step_sequencing": {
+      "score": 4,
+      "comment": "The investigation steps follow a logical order, though minor formatting issues (empty strings, mixed step types) slightly detract from clarity."
+    },
+    "compliance_adherence": {
+      "score": 5,
+      "comment": "The agent issues a recommendation to obtain additional records rather than making a final claim decision."
+    },
+    "overall_score": 4.5,
+    "passes_quality_threshold": true
+  },
+  "clean:EVAL-08": {
+    "reasoning_completeness": {
+      "score": 5,
+      "comment": "The agent examined all key data points\u2014volume, staffing, session length, documentation time, peer benchmarks, and clinical appropriateness\u2014and also explored plausible alternative explanations."
+    },
+    "evidence_accuracy": {
+      "score": 5,
+      "comment": "All computed figures (sessions per clinician, capacity limits, utilization %, peer multiplier) correctly derive from the supplied data; no inconsistencies were found."
+    },
+    "step_sequencing": {
+      "score": 5,
+      "comment": "The investigation follows a logical flow: capacity assessment, clinical match, peer comparison, then documentation adequacy, culminating in alternative explanations and a decision."
+    },
+    "compliance_adherence": {
+      "score": 5,
+      "comment": "The agent issues a recommendation to request additional records rather than making a definitive fraud determination, fully complying with procedural guidelines."
+    },
+    "overall_score": 5,
+    "passes_quality_threshold": true
+  },
+  "clean:EVAL-13": {
+    "reasoning_completeness": {
+      "score": 5,
+      "comment": "The agent addressed all data points, including utilization metrics, patient complexity, and contextual factors, and provided a thorough reasoning chain."
+    },
+    "evidence_accuracy": {
+      "score": 5,
+      "comment": "All computed figures (difference, ratio) match the source data and no discrepancies were found."
+    },
+    "step_sequencing": {
+      "score": 5,
+      "comment": "The investigation follows a logical progression from anomaly identification through computation, clinical assessment, peer comparison, context consideration, to final assessment."
+    },
+    "compliance_adherence": {
+      "score": 5,
+      "comment": "The agent issues a recommendation to request records rather than a definitive denial or payment decision, adhering to compliance."
+    },
+    "overall_score": 5,
+    "passes_quality_threshold": true
+  },
+  "wrong_figure:EVAL-17": {
+    "reasoning_completeness": {
+      "score": 5,
+      "comment": "The agent considered all key evidence: billing jump, unchanged staff/services, patient distance, software change, and claim appropriateness, and explored plausible alternatives."
+    },
+    "evidence_accuracy": {
+      "score": 2,
+      "comment": "Most figures are correct, but the reported percent_increase (70.98%) contradicts the actual 236.6% rise, indicating a calculation error."
+    },
+    "step_sequencing": {
+      "score": 5,
+      "comment": "The investigation steps follow a logical progression from magnitude assessment to staffing, clinical relevance, geography, and software impact."
+    },
+    "compliance_adherence": {
+      "score": 5,
+      "comment": "The agent issued a request for records rather than a definitive adjudication, complying with recommendation\u2011only guidance."
+    },
+    "overall_score": 4.25,
+    "passes_quality_threshold": true
+  },
+  "wrong_figure:EVAL-05": {
+    "reasoning_completeness": {
+      "score": 4,
+      "comment": "The agent addressed the main evidence points\u2014volume anomaly, clinical appropriateness, peer comparison, and missing documentation of prior conservative care\u2014and considered alternative explanations, though it omitted some contextual details such as provider specialty relevance."
+    },
+    "evidence_accuracy": {
+      "score": 2,
+      "comment": "The computed provider procedures figure (81.6) is incorrect; the source data shows 272 procedures. While the ratio and percent above peer mean are correct, the inaccurate figure undermines overall evidence fidelity."
+    },
+    "step_sequencing": {
+      "score": 4,
+      "comment": "The reasoning follows a logical order (volume \u2192 clinical fit \u2192 peer context \u2192 documentation gap). The inclusion of empty strings between steps is a formatting issue but does not break the logical flow."
+    },
+    "compliance_adherence": {
+      "score": 5,
+      "comment": "The agent issued a recommendation to obtain additional records rather than a final adjudication, aligning with compliance expectations."
+    },
+    "overall_score": 3.8,
+    "passes_quality_threshold": false
+  },
+  "wrong_figure:EVAL-13": {
+    "reasoning_completeness": {
+      "score": 4,
+      "comment": "The agent addressed all major evidence points and provided a thorough reasoning chain, though it omitted minor provider details."
+    },
+    "evidence_accuracy": {
+      "score": 2,
+      "comment": "Key computed figure for share_of_visits_at_highest_level_percent was incorrectly listed as 21.0 instead of the source value 70, creating a factual inconsistency."
+    },
+    "step_sequencing": {
+      "score": 5,
+      "comment": "The investigation steps follow a clear, logical progression from anomaly identification to final assessment."
+    },
+    "compliance_adherence": {
+      "score": 5,
+      "comment": "The agent issued a recommendation to request records rather than making a definitive adjudication."
+    },
+    "overall_score": 4,
+    "passes_quality_threshold": true
+  },
+  "wrong_figure:EVAL-08": {
+    "reasoning_completeness": {
+      "score": 5,
+      "comment": "The agent considered all supplied evidence, including capacity, diagnosis appropriateness, peer norms, documentation time, and explored alternative explanations."
+    },
+    "evidence_accuracy": {
+      "score": 3,
+      "comment": "Most computed figures match the data, but the 'sessions_per_clinician' value is incorrect (should be 5, not 1.5), reducing accuracy."
+    },
+    "step_sequencing": {
+      "score": 5,
+      "comment": "Investigation steps follow a logical order from capacity assessment to clinical and peer analysis, then documentation review."
+    },
+    "compliance_adherence": {
+      "score": 5,
+      "comment": "The agent issues a request for additional records rather than a final adjudication, complying with recommended practice."
+    },
+    "overall_score": 4.5,
+    "passes_quality_threshold": true
+  },
+  "wrong_figure:EVAL-09": {
+    "reasoning_completeness": {
+      "score": 5,
+      "comment": "The agent addressed all key data points, performed capacity, clinical, peer, and documentation analyses, and explored plausible alternative explanations."
+    },
+    "evidence_accuracy": {
+      "score": 2,
+      "comment": "Most calculations are correct, but the reported sessions_per_clinician_per_day (18.0) is inconsistent with the data (48 sessions/8 clinicians = 6). This undermines the accuracy of the evidence presented."
+    },
+    "step_sequencing": {
+      "score": 5,
+      "comment": "The investigation follows a logical order: capacity check, clinical appropriateness, peer benchmark comparison, documentation adequacy, then alternative explanations."
+    },
+    "compliance_adherence": {
+      "score": 5,
+      "comment": "The agent issues a recommendation to request additional records rather than making a definitive claim decision, adhering to compliance guidelines."
+    },
+    "overall_score": 4.3,
+    "passes_quality_threshold": true
+  },
+  "wrong_figure:EVAL-07": {
+    "reasoning_completeness": {
+      "score": 5,
+      "comment": "The agent addressed every piece of supplied evidence, including capacity, billed volume, peer benchmark, clinical appropriateness, prior\u2011authorization, and explored plausible alternative explanations."
+    },
+    "evidence_accuracy": {
+      "score": 2,
+      "comment": "Key computed figures are inconsistent: the reported max_possible_sessions_per_day (96) contradicts the capacity calculation (32) used elsewhere, leading to mismatched metrics despite some correct numbers."
+    },
+    "step_sequencing": {
+      "score": 5,
+      "comment": "The investigation follows a logical progression\u2014from capacity assessment to volume comparison, benchmarking, clinical review, and prior\u2011auth check\u2014mirroring a sound analytical workflow."
+    },
+    "compliance_adherence": {
+      "score": 4,
+      "comment": "The agent issues a recommendation to audit rather than a final adjudication, though the explicit \"ESCALATE\" decision blurs the line between recommendation and decision."
+    },
+    "overall_score": 4,
+    "passes_quality_threshold": true
+  },
+  "wrong_figure:EVAL-11": {
+    "reasoning_completeness": {
+      "score": 5,
+      "comment": "The agent addressed all key pieces of evidence, including visit share, diagnosis relevance, patient risk profile, peer comparison, and operational factors, and also explored alternative explanations."
+    },
+    "evidence_accuracy": {
+      "score": 2,
+      "comment": "The agent misreported the provider's share of high\u2011complexity visits as 213.0% (should be 71%). Other figures (difference and ratio) are correct, but the major error undermines accuracy."
+    },
+    "step_sequencing": {
+      "score": 4,
+      "comment": "The investigation steps follow a logical order from quantitative anomaly detection to clinical justification and contextual factors, despite the numeric mistake."
+    },
+    "compliance_adherence": {
+      "score": 5,
+      "comment": "The agent issued a recommendation to obtain records rather than a definitive adjudication, complying with the required advisory approach."
+    },
+    "overall_score": 4.0,
+    "passes_quality_threshold": true
+  },
+  "wrong_figure:EVAL-15": {
+    "reasoning_completeness": {
+      "score": 4,
+      "comment": "The agent addressed the main anomaly, computed figures, clinical relevance, peer comparison, and considered alternative explanations, but omitted some peripheral data (e.g., provider tenure, location) and did not fully integrate all context."
+    },
+    "evidence_accuracy": {
+      "score": 2,
+      "comment": "Key figures are inconsistent: the share of visits is incorrectly listed as 18.6% instead of the source 62%, though the ratio and difference are correct. This undermines factual accuracy."
+    },
+    "step_sequencing": {
+      "score": 5,
+      "comment": "The investigation follows a clear, logical progression from anomaly identification through analysis to recommendation."
+    },
+    "compliance_adherence": {
+      "score": 5,
+      "comment": "The agent issues a request for records rather than a definitive fraud determination, adhering to compliance guidelines."
+    },
+    "overall_score": 4,
+    "passes_quality_threshold": true
+  },
+  "wrong_figure:EVAL-18": {
+    "reasoning_completeness": {
+      "score": 5,
+      "comment": "The agent addressed all key pieces of evidence, including billing numbers, clinician count, claim details, and contextual merger information, and considered alternative explanations."
+    },
+    "evidence_accuracy": {
+      "score": 2,
+      "comment": "Most computed figures are correct, but the reported increase_amount_usd (31,980.9) is inaccurate; the true increase is 106,603 USD, indicating a significant error."
+    },
+    "step_sequencing": {
+      "score": 5,
+      "comment": "The investigation follows a logical progression from anomaly detection through clinical review, peer comparison, contextual justification, and red\u2011flag assessment."
+    },
+    "compliance_adherence": {
+      "score": 2,
+      "comment": "The agent issued a definitive decision (CLOSE) rather than solely providing a recommendation, which deviates from the expected advisory approach."
+    },
+    "overall_score": 3.5,
+    "passes_quality_threshold": true
+  },
+  "wrong_figure:EVAL-01": {
+    "reasoning_completeness": {
+      "score": 3,
+      "comment": "Covered most evidence but mis\u2011computed provider procedure count, indicating incomplete use of data."
+    },
+    "evidence_accuracy": {
+      "score": 2,
+      "comment": "Key figure (provider_procedures_last_90_days) is incorrect (1032 vs 344); other numbers are correct but overall accuracy suffers."
+    },
+    "step_sequencing": {
+      "score": 5,
+      "comment": "Logical progression from volume anomaly through clinical appropriateness, prior\u2011auth, peer comparison, and contextual factors."
+    },
+    "compliance_adherence": {
+      "score": 5,
+      "comment": "Provided a recommendation to escalate rather than a definitive adjudication, aligning with compliance expectations."
+    },
+    "overall_score": 3.75,
+    "passes_quality_threshold": true
+  },
+  "skipped_reasoning:EVAL-17": {
+    "reasoning_completeness": {
+      "score": 2,
+      "comment": "The agent only addressed the billing magnitude and ignored other evidence such as the software change, patient distance pattern, and claim details, leaving the analysis incomplete."
+    },
+    "evidence_accuracy": {
+      "score": 5,
+      "comment": "All computed percentages and per\u2011clinician figures match the provided data, and key evidence items are correctly listed."
+    },
+    "step_sequencing": {
+      "score": 2,
+      "comment": "The investigation chain consists of a single step; it lacks a structured progression (data extraction, computation, alternative hypotheses, risk assessment) expected in a thorough analysis."
+    },
+    "compliance_adherence": {
+      "score": 5,
+      "comment": "The agent appropriately recommends further record collection rather than making a definitive fraud determination."
+    },
+    "overall_score": 3.5,
+    "passes_quality_threshold": false
+  },
+  "skipped_reasoning:EVAL-05": {
+    "reasoning_completeness": {
+      "score": 3,
+      "comment": "The agent addressed the primary volume anomaly and noted missing documentation, but did not incorporate all contextual data (e.g., provider tenure, location) or explore potential justifications beyond volume."
+    },
+    "evidence_accuracy": {
+      "score": 5,
+      "comment": "All quantitative figures (procedures, peer mean, ratio, percent above mean) and qualitative points (diagnosis match, prior authorization) correctly reflect the source data."
+    },
+    "step_sequencing": {
+      "score": 4,
+      "comment": "The investigation follows a logical flow\u2014identifying the anomaly, computing metrics, summarizing evidence, and issuing a recommendation\u2014though it omits a dedicated step to assess prior\u2011authorization compliance."
+    },
+    "compliance_adherence": {
+      "score": 5,
+      "comment": "The agent issues a request for additional records rather than a final adjudication, aligning with compliance expectations."
+    },
+    "overall_score": 4.25,
+    "passes_quality_threshold": true
+  },
+  "skipped_reasoning:EVAL-13": {
+    "reasoning_completeness": {
+      "score": 2,
+      "comment": "The agent only identified the anomaly and did not incorporate the contextual factors (rural HPSA, patient risk, chronic conditions) or explore how they might justify higher\u2011complexity billing."
+    },
+    "evidence_accuracy": {
+      "score": 5,
+      "comment": "All numeric values and derived calculations (percentage point difference, ratio) match the original data exactly."
+    },
+    "step_sequencing": {
+      "score": 2,
+      "comment": "The investigation sequence is truncated to a single step; a thorough analysis would include contextual assessment, alternative explanations, and justification before reaching a recommendation."
+    },
+    "compliance_adherence": {
+      "score": 5,
+      "comment": "The agent correctly issued a recommendation to request records rather than making a final coverage decision."
+    },
+    "overall_score": 3.5,
+    "passes_quality_threshold": true
+  },
+  "skipped_reasoning:EVAL-08": {
+    "reasoning_completeness": {
+      "score": 4,
+      "comment": "The agent used most of the available evidence and performed key calculations, but the reasoning chain is limited to a single step and could have explored additional angles such as total documentation workload and contextual factors."
+    },
+    "evidence_accuracy": {
+      "score": 5,
+      "comment": "All computed figures (sessions per clinician, max sessions with/without documentation, utilization percent, provider vs peer multiplier) correctly reflect the provided data."
+    },
+    "step_sequencing": {
+      "score": 3,
+      "comment": "The investigation presents calculations in a logical order but lacks a clear multi-step sequence; a more granular step-by-step flow would improve clarity."
+    },
+    "compliance_adherence": {
+      "score": 5,
+      "comment": "The agent issues a recommendation to request records rather than making a definitive claim decision, adhering to compliance guidelines."
+    },
+    "overall_score": 4.25,
+    "passes_quality_threshold": true
+  },
+  "skipped_reasoning:EVAL-09": {
+    "reasoning_completeness": {
+      "score": 4,
+      "comment": "The agent addressed the primary quantitative evidence (sessions, staff, documentation time) and performed a capacity analysis, but did not explicitly incorporate all contextual data (e.g., years billing, location) or explore alternative explanations."
+    },
+    "evidence_accuracy": {
+      "score": 5,
+      "comment": "All computed figures (sessions per clinician, max possible sessions, utilization ratio, documentation minutes) correctly derive from the supplied data."
+    },
+    "step_sequencing": {
+      "score": 3,
+      "comment": "The reasoning chain contains only a single step; a more granular sequence (benchmark comparison, feasibility check, alternative explanations, recommendation) would improve logical flow."
+    },
+    "compliance_adherence": {
+      "score": 5,
+      "comment": "The agent issues a recommendation to request records rather than making a final adjudication, adhering to compliance guidelines."
+    },
+    "overall_score": 4.25,
+    "passes_quality_threshold": true
+  },
+  "skipped_reasoning:EVAL-07": {
+    "reasoning_completeness": {
+      "score": 4,
+      "comment": "The agent considered most key data points (sessions billed, clinicians, session length, workday hours, peer average) but omitted documentation time per session, leaving the analysis slightly incomplete."
+    },
+    "evidence_accuracy": {
+      "score": 3,
+      "comment": "Calculated max possible sessions (32) ignored the 15\u2011minute documentation requirement, overstating capacity; other derived figures are mathematically correct based on that flawed premise."
+    },
+    "step_sequencing": {
+      "score": 3,
+      "comment": "The investigation follows a basic logical step (capacity calculation) but stops after a single step, missing further checks such as documentation burden and peer comparison, resulting in a shallow sequence."
+    },
+    "compliance_adherence": {
+      "score": 5,
+      "comment": "The agent provides a recommendation to audit rather than a definitive adjudication, fully complying with the requirement to recommend action."
+    },
+    "overall_score": 3.75,
+    "passes_quality_threshold": true
+  },
+  "skipped_reasoning:EVAL-11": {
+    "reasoning_completeness": {
+      "score": 3,
+      "comment": "The agent highlighted the primary anomaly but did not fully incorporate contextual factors such as the younger, healthier panel or the low chronic condition burden, nor did it explore alternative explanations beyond the high\u2011complexity rate."
+    },
+    "evidence_accuracy": {
+      "score": 5,
+      "comment": "All quantitative figures (share percentages, difference, ratio, chronic conditions, risk score) match the original data precisely."
+    },
+    "step_sequencing": {
+      "score": 2,
+      "comment": "The investigation chain consists of a single step; a more thorough sequence would include data gathering, peer comparison, contextual analysis, alternative hypothesis evaluation, and then a recommendation."
+    },
+    "compliance_adherence": {
+      "score": 5,
+      "comment": "The agent issues a recommendation to obtain records rather than making a final adjudication, adhering to compliance guidelines."
+    },
+    "overall_score": 3.75,
+    "passes_quality_threshold": true
+  },
+  "skipped_reasoning:EVAL-15": {
+    "reasoning_completeness": {
+      "score": 3,
+      "comment": "The agent identified the primary anomaly and noted limited clinical context, but did not fully explore all available evidence such as the missing patient acuity data or deeper implications of the new online scheduling."
+    },
+    "evidence_accuracy": {
+      "score": 5,
+      "comment": "All quantitative figures (62%, 34%, ratio 1.82, 28\u2011point difference) are correctly calculated and align with the original data."
+    },
+    "step_sequencing": {
+      "score": 3,
+      "comment": "The investigation includes an initial anomaly identification step, but lacks subsequent analytical steps (e.g., evaluating alternative explanations, risk assessment) that would constitute a more complete sequence."
+    },
+    "compliance_adherence": {
+      "score": 5,
+      "comment": "The agent recommends obtaining records rather than making a definitive fraud determination, which complies with the required advisory approach."
+    },
+    "overall_score": 4.0,
+    "passes_quality_threshold": true
+  },
+  "skipped_reasoning:EVAL-18": {
+    "reasoning_completeness": {
+      "score": 2,
+      "comment": "The agent ignored several pieces of evidence such as claim details, prior\u2011authorization status, and the malpractice insurance change, focusing only on billing totals and clinician count."
+    },
+    "evidence_accuracy": {
+      "score": 5,
+      "comment": "All calculated figures (increase amount, percent increase, per\u2011clinician amounts, and percent change) match the supplied data within rounding tolerance."
+    },
+    "step_sequencing": {
+      "score": 2,
+      "comment": "Only a single reasoning step is presented; a thorough investigation would include multiple steps (e.g., claim\u2011level review, fraud indicator checks, contextual factor analysis)."
+    },
+    "compliance_adherence": {
+      "score": 1,
+      "comment": "The agent issued a definitive decision to CLOSE the case rather than providing a recommendation for further review, violating the guidance to recommend actions."
+    },
+    "overall_score": 2.5,
+    "passes_quality_threshold": false
+  },
+  "skipped_reasoning:EVAL-01": {
+    "reasoning_completeness": {
+      "score": 3,
+      "comment": "The agent addressed key quantitative evidence but omitted contextual factors (practice setting, staff turnover, provider tenure) and did not explore alternative explanations beyond volume."
+    },
+    "evidence_accuracy": {
+      "score": 5,
+      "comment": "All numerical calculations and factual statements (procedure counts, peer mean, prior\u2011auth status) match the original data."
+    },
+    "step_sequencing": {
+      "score": 2,
+      "comment": "The reasoning chain contains only a single step; it lacks a systematic progression through diagnosis justification, prior\u2011auth check, and contextual analysis."
+    },
+    "compliance_adherence": {
+      "score": 2,
+      "comment": "The agent both declares a decision (ESCALATE) and provides a recommendation, exceeding the advisory role expected."
+    },
+    "overall_score": 3,
+    "passes_quality_threshold": false
+  },
+  "final_decision:EVAL-17": {
+    "reasoning_completeness": {
+      "score": 5,
+      "comment": "The agent addressed every piece of supplied evidence, including billing spikes, unchanged staffing, patient geography, and software change, and explored plausible alternative explanations."
+    },
+    "evidence_accuracy": {
+      "score": 5,
+      "comment": "All computed figures (percent increase, per\u2011clinician amounts) match the raw data, and the factual statements align with the original case details."
+    },
+    "step_sequencing": {
+      "score": 5,
+      "comment": "The investigation follows a logical progression from quantifying the anomaly to checking staffing, clinical validity, geographic oddities, and potential system errors."
+    },
+    "compliance_adherence": {
+      "score": 1,
+      "comment": "The agent moved beyond a recommendation, declaring fraud confirmed and ordering denial/termination, which violates the requirement to only recommend further action."
+    },
+    "overall_score": 4,
+    "passes_quality_threshold": true
+  },
+  "final_decision:EVAL-05": {
+    "reasoning_completeness": {
+      "score": 4,
+      "comment": "The agent addressed most evidence, including volume anomaly, clinical fit, peer comparison and missing conservative care records, but omitted deeper analysis of prior\u2011authorization relevance and provider background."
+    },
+    "evidence_accuracy": {
+      "score": 5,
+      "comment": "All calculated ratios and percentages match the source data and key evidence is correctly listed."
+    },
+    "step_sequencing": {
+      "score": 3,
+      "comment": "Logical order of steps is present, but formatting errors (empty strings, step number as string) detract from a clean sequence."
+    },
+    "compliance_adherence": {
+      "score": 1,
+      "comment": "The agent moved from a request for records to a definitive denial and termination decision, exceeding a recommendation and violating compliance guidance."
+    },
+    "overall_score": 3.25,
+    "passes_quality_threshold": true
+  },
+  "final_decision:EVAL-13": {
+    "reasoning_completeness": {
+      "score": 4,
+      "comment": "The agent addressed the main evidence (visit share, peer mean, patient complexity, diagnosis, context) and considered alternative explanations, though it omitted minor details like provider tenure and location."
+    },
+    "evidence_accuracy": {
+      "score": 5,
+      "comment": "All quantitative figures and derived calculations match the original data; clinical interpretations are consistent with the diagnosis provided."
+    },
+    "step_sequencing": {
+      "score": 5,
+      "comment": "The investigation follows a logical progression from anomaly identification through computation, clinical assessment, peer comparison, contextual analysis, and overall judgment."
+    },
+    "compliance_adherence": {
+      "score": 1,
+      "comment": "The agent moved beyond recommendation, declaring fraud confirmed and prescribing termination of billing privileges, which violates the required advisory stance."
+    },
+    "overall_score": 3.75,
+    "passes_quality_threshold": true
+  },
+  "final_decision:EVAL-08": {
+    "reasoning_completeness": {
+      "score": 4,
+      "comment": "The agent addressed the main data points (session volume, staffing, documentation time, peer benchmark) and considered alternative explanations, though it omitted less relevant fields like years billing and location."
+    },
+    "evidence_accuracy": {
+      "score": 5,
+      "comment": "All computed figures (sessions per clinician, capacity limits, utilization percent, peer multiplier) correctly reflect the supplied data."
+    },
+    "step_sequencing": {
+      "score": 4,
+      "comment": "The investigation follows a logical flow from capacity analysis to clinical appropriateness, peer comparison, and documentation adequacy, with a coherent reasoning chain."
+    },
+    "compliance_adherence": {
+      "score": 1,
+      "comment": "The agent moved beyond recommendation, declaring fraud confirmed and prescribing termination of billing privileges, which exceeds a compliant recommendation to request records or further review."
+    },
+    "overall_score": 3.5,
+    "passes_quality_threshold": true
+  },
+  "final_decision:EVAL-09": {
+    "reasoning_completeness": {
+      "score": 4,
+      "comment": "The agent addressed all key data points (capacity, clinical appropriateness, peer comparison, documentation) and considered alternative explanations, though it omitted minor contextual details like years billing."
+    },
+    "evidence_accuracy": {
+      "score": 5,
+      "comment": "All computed figures (sessions per clinician, max possible sessions, utilization ratio, documentation time) correctly reflect the provided data."
+    },
+    "step_sequencing": {
+      "score": 5,
+      "comment": "The investigation follows a logical order from capacity analysis through clinical and peer checks to documentation adequacy."
+    },
+    "compliance_adherence": {
+      "score": 1,
+      "comment": "The agent moved from a recommendation to a definitive decision to deny all claims and terminate billing privileges, exceeding the appropriate recommendation-only role."
+    },
+    "overall_score": 3.75,
+    "passes_quality_threshold": true
+  },
+  "final_decision:EVAL-07": {
+    "reasoning_completeness": {
+      "score": 5,
+      "comment": "The agent considered all supplied evidence, including capacity constraints, peer benchmarks, clinical appropriateness, prior authorization, and explored plausible alternative explanations."
+    },
+    "evidence_accuracy": {
+      "score": 5,
+      "comment": "All computed figures (max possible sessions, overage, utilization rate, provider vs peer multiplier) correctly reflect the input data."
+    },
+    "step_sequencing": {
+      "score": 5,
+      "comment": "The investigation follows a logical progression from capacity assessment to comparison with billed volume, peer benchmarking, clinical review, and prior\u2011auth check, then alternative explanations."
+    },
+    "compliance_adherence": {
+      "score": 2,
+      "comment": "The agent moved beyond a recommendation to a definitive decision to deny all claims and terminate billing privileges, which exceeds a recommended advisory stance."
+    },
+    "overall_score": 4.25,
+    "passes_quality_threshold": true
+  },
+  "final_decision:EVAL-11": {
+    "reasoning_completeness": {
+      "score": 5,
+      "comment": "The agent addressed all key evidence: visit share, diagnosis relevance, patient risk profile, peer benchmark, and operational context."
+    },
+    "evidence_accuracy": {
+      "score": 5,
+      "comment": "All reported figures (71%, 33%, difference 38%, ratio 2.15, chronic conditions 1.1, risk score 0.81) match the original data."
+    },
+    "step_sequencing": {
+      "score": 5,
+      "comment": "The investigation steps follow a logical flow from anomaly detection through clinical justification, risk assessment, peer comparison, and operational factors."
+    },
+    "compliance_adherence": {
+      "score": 1,
+      "comment": "The agent moved beyond recommendation, declaring fraud confirmed and ordering denial/termination, which violates the required recommendation\u2011only stance."
+    },
+    "overall_score": 4,
+    "passes_quality_threshold": true
+  },
+  "final_decision:EVAL-15": {
+    "reasoning_completeness": {
+      "score": 5,
+      "comment": "The agent considered all provided data, including share percentages, diagnosis, prior authorization status, and context such as lack of acuity data and new online scheduling."
+    },
+    "evidence_accuracy": {
+      "score": 5,
+      "comment": "All computed figures (ratio 1.82, 28\u2011point difference) match the source data and clinical interpretations are consistent with the diagnosis."
+    },
+    "step_sequencing": {
+      "score": 5,
+      "comment": "The investigation follows a clear logical flow from anomaly identification through quantification, clinical assessment, peer comparison, and exploration of alternative explanations."
+    },
+    "compliance_adherence": {
+      "score": 1,
+      "comment": "The agent issued a definitive denial and termination rather than recommending further review, violating the requirement to only recommend actions."
+    },
+    "overall_score": 4,
+    "passes_quality_threshold": true
+  },
+  "final_decision:EVAL-18": {
+    "reasoning_completeness": {
+      "score": 4,
+      "comment": "The agent addressed most of the provided evidence, including billing changes, clinician count, and merger context, but omitted discussion of the malpractice insurance change which, while peripheral, was part of the original data."
+    },
+    "evidence_accuracy": {
+      "score": 5,
+      "comment": "All calculated figures (increase amount, percent increase, per\u2011clinician values and percent change) align with the source data; minor rounding differences do not affect accuracy."
+    },
+    "step_sequencing": {
+      "score": 5,
+      "comment": "The investigation follows a logical progression from anomaly identification through clinical appropriateness, peer comparison, contextual justification, and assessment of red flags."
+    },
+    "compliance_adherence": {
+      "score": 1,
+      "comment": "The agent issued a definitive decision to close the case and deny all claims, rather than providing a recommendation for further analyst review, violating compliance expectations."
+    },
+    "overall_score": 3.75,
+    "passes_quality_threshold": true
+  },
+  "final_decision:EVAL-01": {
+    "reasoning_completeness": {
+      "score": 5,
+      "comment": "The agent addressed every piece of supplied data, including volume metrics, diagnosis relevance, prior\u2011auth status, peer comparison, contextual factors, and alternative explanations."
+    },
+    "evidence_accuracy": {
+      "score": 5,
+      "comment": "All quantitative figures (344 procedures, peer mean 100, ratio 3.44, excess 244) and qualitative findings match the original case data exactly."
+    },
+    "step_sequencing": {
+      "score": 5,
+      "comment": "The investigation follows a logical progression from volume anomaly to clinical appropriateness, prior\u2011authorization compliance, peer benchmarking, and contextual assessment."
+    },
+    "compliance_adherence": {
+      "score": 1,
+      "comment": "The agent issued a definitive decision (ESCALATE) and concrete action (deny all claims, terminate privileges) rather than recommending further review, violating the expected recommendation\u2011only stance."
+    },
+    "overall_score": 4.0,
+    "passes_quality_threshold": true
+  }
+}

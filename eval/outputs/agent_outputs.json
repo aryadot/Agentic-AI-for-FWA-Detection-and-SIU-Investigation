@@ -1,0 +1,1222 @@
+{
+  "EVAL-16": {
+    "case_id": "EVAL-16",
+    "core_anomaly": "Monthly billing surged from $58,938 to $200,145 without added clinicians or locations",
+    "computed_figures": {
+      "increase_amount_usd": 141207,
+      "percent_increase": 239,
+      "average_monthly_per_clinician_before_usd": 14734.5,
+      "average_monthly_per_clinician_after_usd": 50036.25
+    },
+    "reasoning_chain": [
+      {
+        "step": 1,
+        "check": "Identify billing jump",
+        "finding": "Monthly billed rose 239% (+$141,207) while staff count stayed at 4"
+      },
+      {
+        "step": 2,
+        "check": "Clinical appropriateness of 97110 for M54.50",
+        "finding": "97110 is appropriate for low back pain, but typical utilization limits (e.g., 1\u20113 units per visit) require visit/unit data to assess plausibility"
+      },
+      {
+        "step": 3,
+        "check": "Peer comparison",
+        "finding": "No peer benchmarks provided, but a >200% increase in a single PT practice is atypical absent major operational changes"
+      },
+      {
+        "step": 4,
+        "check": "Contextual factors",
+        "finding": "Online scheduling added; 40% of new patients live >100\u202fmi away, suggesting possible tele\u2011PT or travel\u2011intensive visits"
+      },
+      {
+        "step": 5,
+        "check": "Legitimate explanations",
+        "finding": "Increased patient volume via online scheduling or telehealth could raise revenue; higher payer mix or contract rates could also contribute, but no evidence supplied"
+      }
+    ],
+    "alternative_explanations_considered": [
+      {
+        "explanation": "Online scheduling drove higher patient volume and more billable visits",
+        "assessment": "Plausible but requires visit counts and scheduling logs"
+      },
+      {
+        "explanation": "Telehealth/PT sessions billed under 97110 after the practice added virtual capabilities",
+        "assessment": "Possible; need documentation of telehealth delivery and compliance"
+      },
+      {
+        "explanation": "Shift to higher\u2011paying payer contracts or fee\u2011schedule changes",
+        "assessment": "No data on payer mix; must be verified"
+      },
+      {
+        "explanation": "Seasonal or post\u2011pandemic rebound in demand",
+        "assessment": "Could contribute but unlikely to explain a >200% jump alone"
+      }
+    ],
+    "key_evidence": [
+      "Monthly billed before: $58,938",
+      "Monthly billed after: $200,145",
+      "Clinicians unchanged (4)",
+      "No new locations or services",
+      "40% of new patients >100\u202fmi away",
+      "Online appointment scheduling added this year"
+    ],
+    "decision": "REQUEST_RECORDS",
+    "decision_rationale": "The billing increase is substantial and unexplained by the limited data; without visit counts, unit documentation, and payer mix details, we cannot determine if the surge is justified or indicative of fraud.",
+    "recommended_action": "Request detailed claim line items, patient encounter notes, unit counts per visit, scheduling logs, and payer contract information for the period before and after the increase."
+  },
+  "EVAL-10": {
+    "case_id": "EVAL-10",
+    "core_anomaly": "Average of 35 billed 60\u2011minute psychotherapy sessions per day far exceeds peer average of 12 and may be infeasible given documented staffing and documentation time",
+    "computed_figures": {
+      "sessions_per_day": 35,
+      "sessions_per_clinician_per_day": 7,
+      "max_possible_sessions_per_day": 40,
+      "peer_gap_percent": 191.7
+    },
+    "reasoning_chain": [
+      {
+        "step": 1,
+        "check": "Staff capacity vs billed volume",
+        "finding": "5 clinicians * 8\u2011hour day = 40 possible 60\u2011min slots; 35 billed = 7 slots per clinician, technically possible but leaves little margin for breaks or admin"
+      },
+      {
+        "step": 2,
+        "check": "Documentation time adequacy",
+        "finding": "Only 15 minutes of documentation recorded per 60\u2011min session, which may be insufficient to support clinical work"
+      },
+      {
+        "step": 3,
+        "check": "Clinical appropriateness of service",
+        "finding": "Diagnosis F32.1 justifies 60\u2011min psychotherapy; no prior auth required"
+      },
+      {
+        "step": 4,
+        "check": "Peer comparison",
+        "finding": "Billed volume is ~192% higher than peer mean of 12 sessions/day"
+      },
+      {
+        "step": 5,
+        "check": "Contextual factors",
+        "finding": "No schedule details, overtime, telehealth, or additional staff provided; relocation noted but irrelevant"
+      }
+    ],
+    "alternative_explanations_considered": [
+      {
+        "explanation": "Clinicians working overtime or extended clinic hours beyond standard 8\u2011hour day",
+        "assessment": "Possible but not documented"
+      },
+      {
+        "explanation": "Use of telehealth allowing back\u2011to\u2011back sessions with minimal turnover",
+        "assessment": "Could increase capacity but still requires adequate documentation"
+      },
+      {
+        "explanation": "Billing error or double\u2011counting of sessions",
+        "assessment": "Potential, needs verification"
+      },
+      {
+        "explanation": "High local demand for behavioral health services",
+        "assessment": "May justify higher volume but still must align with staffing and documentation"
+      }
+    ],
+    "key_evidence": [
+      "average_sessions_billed_per_day: 35",
+      "licensed_clinicians_on_staff: 5",
+      "session_length_minutes: 60",
+      "documentation_minutes_per_session: 15",
+      "peer_mean_sessions_per_day: 12"
+    ],
+    "decision": "REQUEST_RECORDS",
+    "decision_rationale": "The evidence shows a significant volume anomaly but lacks critical information on clinician work schedules, overtime, and detailed session documentation needed to determine legitimacy.",
+    "recommended_action": "Request detailed clinician work schedules, time\u2011logs, and supporting clinical documentation for a sample of the billed 60\u2011minute psychotherapy sessions."
+  },
+  "EVAL-07": {
+    "case_id": "EVAL-07",
+    "core_anomaly": "Billed 56 psychotherapy sessions per 8\u2011hour workday despite having only 4 licensed clinicians, exceeding realistic capacity",
+    "computed_figures": {
+      "max_possible_sessions_per_day": 32,
+      "billed_sessions_per_day": 56,
+      "overage_sessions": 24,
+      "utilization_rate_percent": 175,
+      "provider_vs_peer_multiplier": 4
+    },
+    "reasoning_chain": [
+      {
+        "step": 1,
+        "check": "Capacity calculation",
+        "finding": "Each clinician can conduct at most 8 one\u2011hour sessions per 8\u2011hour day (8\u202fhrs/1\u202fhr). With 4 clinicians, max = 32 sessions/day."
+      },
+      {
+        "step": 2,
+        "check": "Comparison to billed volume",
+        "finding": "Provider billed 56 sessions/day, 24 sessions above the maximum feasible."
+      },
+      {
+        "step": 3,
+        "check": "Peer benchmark",
+        "finding": "Peer mean is 14 sessions/day; provider is 4\u00d7 higher."
+      },
+      {
+        "step": 4,
+        "check": "Clinical appropriateness of diagnosis vs procedure",
+        "finding": "F32.1 (moderate depression) legitimately supports 90837 (60\u2011min individual psychotherapy). No clinical mismatch."
+      },
+      {
+        "step": 5,
+        "check": "Prior authorization requirement",
+        "finding": "Not required for this CPT, so lack of PA is not a concern."
+      }
+    ],
+    "alternative_explanations_considered": [
+      {
+        "explanation": "Group therapy counted as multiple individual sessions under 90837",
+        "assessment": "90837 is an individual psychotherapy code; group therapy should use different CPTs (e.g., 90853). Billing 90837 for group sessions would be improper."
+      },
+      {
+        "explanation": "Multiple locations or overlapping telehealth sessions",
+        "assessment": "No evidence of additional sites or extra clinicians; staff count is explicitly 4, limiting capacity."
+      },
+      {
+        "explanation": "Use of non\u2011licensed staff to deliver therapy",
+        "assessment": "Only licensed clinicians may bill for psychotherapy; using unlicensed staff would be non\u2011compliant."
+      },
+      {
+        "explanation": "Documentation time (15\u202fmin) suggests shorter actual encounters",
+        "assessment": "Even if documentation is brief, the billed session length is 60\u202fmin, which must be delivered. Documentation time does not increase capacity."
+      }
+    ],
+    "key_evidence": [
+      "average_sessions_billed_per_day: 56",
+      "licensed_clinicians_on_staff: 4",
+      "session_length_minutes: 60",
+      "standard_workday_hours: 8",
+      "peer_mean_sessions_per_day: 14"
+    ],
+    "decision": "ESCALATE",
+    "decision_rationale": "The provider\u2019s billed volume far exceeds the maximum number of 60\u2011minute psychotherapy sessions that can be delivered by the documented staff within a standard workday, and is four times the peer average. No clinical justification or documented operational factors explain this discrepancy, indicating potential fraud, waste, or abuse.",
+    "recommended_action": "Initiate a detailed audit of the provider\u2019s scheduling logs, clinician time sheets, and supporting clinical documentation to verify the legitimacy of the billed sessions."
+  },
+  "EVAL-12": {
+    "case_id": "EVAL-12",
+    "core_anomaly": "Unusually high proportion of highest\u2011complexity office visits (99215) relative to peers",
+    "computed_figures": {
+      "share_of_visits_at_highest_level_percent": 71,
+      "peer_mean_share_at_highest_level_percent": 31,
+      "percentage_point_difference": 40,
+      "ratio_to_peer_mean": 2.29
+    },
+    "reasoning_chain": [
+      {
+        "step": 1,
+        "check": "Identify anomaly",
+        "finding": "Provider\u2019s 71% of visits are billed at 99215 versus peer mean 31% (40 pp higher, 2.29\u00d7 the average)."
+      },
+      {
+        "step": 2,
+        "check": "Clinical support for 99215",
+        "finding": "Only diagnosis reported is E11.65 (type\u202f2 diabetes with hyperglycemia), which typically warrants moderate\u2011complexity (99214) rather than high\u2011complexity care."
+      },
+      {
+        "step": 3,
+        "check": "Peer comparison",
+        "finding": "Provider\u2019s patient panel is described as younger and healthier; average chronic conditions per patient (1.1) and risk score (0.73) are below typical thresholds for high\u2011complexity visits."
+      },
+      {
+        "step": 4,
+        "check": "Contextual factors",
+        "finding": "No prior\u2011authorization requirement; urban practice does not inherently justify higher coding intensity."
+      }
+    ],
+    "alternative_explanations_considered": [
+      {
+        "explanation": "Provider uses more detailed documentation that legitimately meets high\u2011complexity criteria",
+        "assessment": "Unlikely given low risk score and single diabetes diagnosis; would require supporting notes."
+      },
+      {
+        "explanation": "Coding error or systematic up\u2011coding habit",
+        "assessment": "Consistent with the 71% rate and peer benchmark; plausible."
+      },
+      {
+        "explanation": "Patient population actually has unrecorded comorbidities increasing complexity",
+        "assessment": "Context states younger, healthier panel; no evidence of hidden complexity."
+      }
+    ],
+    "key_evidence": [
+      "71% of visits billed as 99215 vs 31% peer average",
+      "Average chronic conditions per patient\u202f=\u202f1.1",
+      "Average patient risk score\u202f=\u202f0.73",
+      "Diagnosis per claim limited to E11.65"
+    ],
+    "decision": "REQUEST_RECORDS",
+    "decision_rationale": "The disparity between the provider\u2019s high\u2011complexity billing and the low clinical risk indicators suggests possible up\u2011coding, but the limited clinical detail (single diagnosis) prevents a definitive conclusion. Additional chart documentation is needed to verify whether the medical decision\u2011making meets 99215 criteria.",
+    "recommended_action": "Obtain detailed chart notes for a representative sample of 99215 visits to assess history, exam, and decision\u2011making complexity before determining fraud, waste, or abuse."
+  },
+  "EVAL-02": {
+    "case_id": "EVAL-02",
+    "core_anomaly": "Excessive volume of skin substitute (amniotic allograft) procedures relative to peers and lack of clinical justification",
+    "computed_figures": {
+      "provider_procedures_last_90_days": 246,
+      "peer_mean_procedures_last_90_days": 86,
+      "procedure_volume_ratio": 2.86,
+      "procedure_volume_difference": 160,
+      "provider_daily_rate": 2.73,
+      "peer_daily_rate": 0.96
+    },
+    "reasoning_chain": [
+      {
+        "step": 1,
+        "check": "Volume anomaly",
+        "finding": "Provider performed 246 skin substitute procedures in the last 90 days, which is 2.86 times the peer mean of 86 (160 procedures above average)."
+      },
+      {
+        "step": 2,
+        "check": "Clinical appropriateness of diagnosis",
+        "finding": "The billed diagnosis is S00.01XA (superficial abrasion of scalp), which is not an indication for amniotic allograft skin substitutes, typically reserved for chronic, deep or surgical wounds."
+      },
+      {
+        "step": 3,
+        "check": "Prior authorization compliance",
+        "finding": "Prior authorization is required for this procedure but was not obtained."
+      },
+      {
+        "step": 4,
+        "check": "Peer comparison context",
+        "finding": "Provider\u2019s volume far exceeds the average of 36 comparable dermatology peers, with no documented wound\u2011care program to justify higher usage."
+      }
+    ],
+    "alternative_explanations_considered": [
+      {
+        "explanation": "Provider operates a specialized wound\u2011care program that legitimately uses skin substitutes",
+        "assessment": "Context explicitly states the practice is general dermatology with no wound\u2011care program; no supporting documentation provided."
+      },
+      {
+        "explanation": "High referral volume from surgeons or hospitals leading to appropriate use",
+        "assessment": "No evidence of such referrals; diagnosis still mismatched to procedure."
+      },
+      {
+        "explanation": "Recent change in malpractice insurance prompting defensive coding",
+        "assessment": "Insurance change is unrelated to clinical need for skin substitutes."
+      }
+    ],
+    "key_evidence": [
+      "246 skin substitute procedures in 90 days vs peer mean 86",
+      "Diagnosis of superficial scalp abrasion (S00.01XA)",
+      "Prior authorization required but not obtained",
+      "No wound\u2011care program in practice"
+    ],
+    "decision": "ESCALATE",
+    "decision_rationale": "The provider\u2019s procedure volume is markedly higher than peers, the billed diagnosis does not support the use of an amniotic allograft, and required prior authorization was not obtained. No legitimate clinical or operational justification is evident, indicating potential fraud, waste, or abuse.",
+    "recommended_action": "Forward the case to the fraud investigation team for detailed audit, request complete medical records for the 246 encounters, and assess billing compliance and clinical justification."
+  },
+  "EVAL-20": {
+    "case_id": "EVAL-20",
+    "core_anomaly": "Sharp increase in monthly billed amount after unspecified change",
+    "computed_figures": {
+      "increase_amount_usd": 125441,
+      "percent_increase": 231.8,
+      "average_before_per_clinician_usd": 13527.25,
+      "average_after_per_clinician_usd_assuming_4": 44887
+    },
+    "reasoning_chain": [
+      {
+        "step": 1,
+        "check": "Identify anomaly",
+        "finding": "Monthly billing rose from $54,107 to $179,548, a >3\u2011fold jump."
+      },
+      {
+        "step": 2,
+        "check": "Compute figures",
+        "finding": "Increase $125,441 (231.8% rise). With 4 clinicians pre\u2011change, avg $13,527 per clinician; if still 4 clinicians, avg $44,887 per clinician."
+      },
+      {
+        "step": 3,
+        "check": "Clinical support for procedure",
+        "finding": "97110 for low back pain (M54.50) is a standard, appropriate service."
+      },
+      {
+        "step": 4,
+        "check": "Peer comparison",
+        "finding": "No peer benchmarks provided; typical PT billing for 97110 would not alone explain a $180K monthly total without high volume."
+      },
+      {
+        "step": 5,
+        "check": "Assess explanations",
+        "finding": "Potential legitimate reasons include added clinicians, new contracts, increased patient volume, or coding/reporting errors. Context lacks staffing change details."
+      }
+    ],
+    "alternative_explanations_considered": [
+      {
+        "explanation": "Addition of new clinicians or staff",
+        "assessment": "Could raise total billing; not documented."
+      },
+      {
+        "explanation": "New payer contracts or higher reimbursement rates",
+        "assessment": "May increase revenue; no evidence supplied."
+      },
+      {
+        "explanation": "Shift to higher volume of therapy sessions",
+        "assessment": "Possible but requires volume data."
+      },
+      {
+        "explanation": "Data entry or reporting error",
+        "assessment": "Could inflate post\u2011change figure; needs verification."
+      }
+    ],
+    "key_evidence": [
+      "monthly_billed_before_usd: 54107",
+      "monthly_billed_after_usd: 179548",
+      "clinicians_before: 4"
+    ],
+    "decision": "REQUEST_RECORDS",
+    "decision_rationale": "The evidence shows a significant billing increase but lacks critical information (post\u2011change clinician count, claim volume, dates, and any operational changes) to determine if the rise is justified or indicative of fraud.",
+    "recommended_action": "Request detailed records: post\u2011change clinician roster, claim line\u2011item counts, dates of billing spikes, any new contracts or service agreements, and documentation of practice changes."
+  },
+  "EVAL-09": {
+    "case_id": "EVAL-09",
+    "core_anomaly": "Average of 48 psychotherapy sessions billed per day far exceeds peer average of 13 and may exceed realistic capacity given staff and documentation time",
+    "computed_figures": {
+      "sessions_per_clinician_per_day": 6,
+      "max_possible_sessions_per_day_given_8hr_shift_and_8clinicians": 64,
+      "utilization_ratio_to_peer": 3.69,
+      "documentation_time_per_clinician_per_day_minutes": 90
+    },
+    "reasoning_chain": [
+      {
+        "step": 1,
+        "check": "Capacity analysis",
+        "finding": "8 clinicians working 8\u2011hour days can theoretically deliver up to 64 one\u2011hour sessions; 48 sessions require each clinician to conduct 6 sessions (6\u202fhrs) plus 15\u202fmin documentation per session (1.5\u202fhrs) totaling 7.5\u202fhrs, which is technically feasible but leaves minimal margin for breaks or other duties."
+      },
+      {
+        "step": 2,
+        "check": "Clinical appropriateness",
+        "finding": "Diagnosis F32.1 justifies a 60\u2011minute psychotherapy session; no prior authorization required, so clinical support is adequate."
+      },
+      {
+        "step": 3,
+        "check": "Peer comparison",
+        "finding": "Provider bills 48 sessions/day vs peer mean of 13, a 3.7\u2011fold increase, marking a significant outlier."
+      },
+      {
+        "step": 4,
+        "check": "Documentation adequacy",
+        "finding": "Only 15\u202fminutes of documentation per 60\u2011minute session is recorded, which may be insufficient to substantiate the full therapeutic encounter."
+      }
+    ],
+    "alternative_explanations_considered": [
+      {
+        "explanation": "High local demand for behavioral health services",
+        "assessment": "Possible but would likely be reflected in staffing levels; only 8 clinicians are on staff, limiting throughput."
+      },
+      {
+        "explanation": "Use of telehealth allowing overlapping sessions",
+        "assessment": "No evidence provided; telehealth still requires full clinician time per session."
+      },
+      {
+        "explanation": "Group therapy billed as individual sessions",
+        "assessment": "Procedure code 90837 is for individual psychotherapy; billing group therapy under this code would be inappropriate."
+      },
+      {
+        "explanation": "Clinicians working overtime or split shifts",
+        "assessment": "Even with overtime, the ratio to peer remains unusually high and would need supporting schedule records."
+      }
+    ],
+    "key_evidence": [
+      "average_sessions_billed_per_day: 48",
+      "licensed_clinicians_on_staff: 8",
+      "session_length_minutes: 60",
+      "documentation_minutes_per_session: 15",
+      "peer_mean_sessions_per_day: 13",
+      "standard_workday_hours: 8"
+    ],
+    "decision": "REQUEST_RECORDS",
+    "decision_rationale": "While the billed volume is technically possible given staff numbers, it is markedly higher than peer benchmarks and leaves little time for documentation or breaks, raising concerns about the validity of each session. Additional records (detailed schedules, patient encounter logs, and documentation timestamps) are needed to confirm whether the sessions were actually delivered as billed.",
+    "recommended_action": "Obtain detailed clinician schedules, patient encounter logs, and supporting documentation for the period in question to verify the legitimacy of the 48 daily sessions."
+  },
+  "EVAL-18": {
+    "case_id": "EVAL-18",
+    "core_anomaly": "Sharp rise in monthly billed amount after practice merger",
+    "computed_figures": {
+      "increase_amount_usd": 106603,
+      "percent_increase_overall": 226.2,
+      "per_clinician_before_usd": 15716.67,
+      "per_clinician_after_usd": 17084.78,
+      "percent_change_per_clinician": 8.7
+    },
+    "reasoning_chain": [
+      {
+        "step": 1,
+        "check": "Identify anomaly",
+        "finding": "Monthly billing jumped from $47,150 to $153,753 (\u2248226% increase) after clinicians grew from 3 to 9."
+      },
+      {
+        "step": 2,
+        "check": "Clinical appropriateness",
+        "finding": "97110 for M54.50 is a standard, reimbursable service; no prior authorization required."
+      },
+      {
+        "step": 3,
+        "check": "Peer comparison (per\u2011clinician output)",
+        "finding": "Before: $15,717/clinician/month; After: $17,085/clinician/month \u2013 an ~9% rise, within typical variance."
+      },
+      {
+        "step": 4,
+        "check": "Contextual justification",
+        "finding": "Practice merger transferred patient panels and added 6 clinicians, explaining bulk volume rise."
+      },
+      {
+        "step": 5,
+        "check": "Legitimate explanations vs red flags",
+        "finding": "No evidence of upcoding, services beyond scope, or missing prior auth; increase aligns with documented operational change."
+      }
+    ],
+    "alternative_explanations_considered": [
+      {
+        "explanation": "Upcoding or billing for services not rendered",
+        "assessment": "Procedure is low\u2011complexity; per\u2011clinician increase modest; no pattern of higher\u2011level codes."
+      },
+      {
+        "explanation": "Improper billing without required prior authorization",
+        "assessment": "Prior authorization not required for 97110; thus not a violation."
+      }
+    ],
+    "key_evidence": [
+      "Monthly billed before: $47,150",
+      "Monthly billed after: $153,753",
+      "Clinicians before: 3",
+      "Clinicians after: 9",
+      "Merger transferred patient panels"
+    ],
+    "decision": "CLOSE",
+    "decision_rationale": "The billing surge is fully explained by the documented merger and tripling of clinicians, with only a modest per\u2011clinician increase that is clinically appropriate. No red\u2011flag indicators are present.",
+    "recommended_action": "Close the case with documentation of the legitimate merger explanation; continue routine monitoring of future billing trends."
+  },
+  "EVAL-15": {
+    "case_id": "EVAL-15",
+    "core_anomaly": "Share of 99215 visits markedly higher than peers",
+    "computed_figures": {
+      "share_of_visits_at_highest_level_percent": 62,
+      "peer_mean_share_at_highest_level_percent": 34,
+      "ratio_to_peer": 1.82,
+      "percentage_point_difference": 28
+    },
+    "reasoning_chain": [
+      {
+        "step": 1,
+        "check": "Identify anomaly",
+        "finding": "Provider's 62% share of highest\u2011complexity office visits (99215) far exceeds peer mean of 34%."
+      },
+      {
+        "step": 2,
+        "check": "Compute figures",
+        "finding": "Ratio to peer = 62/34 \u2248 1.82 (182%); difference = 28 percentage points."
+      },
+      {
+        "step": 3,
+        "check": "Clinical support for procedure",
+        "finding": "Diagnosis (E11.65 \u2013 Type 2 diabetes with hyperglycemia) alone rarely justifies high\u2011complexity (99215) without additional severe or multiple problems."
+      },
+      {
+        "step": 4,
+        "check": "Peer comparison",
+        "finding": "Provider's share is >1.5\u00d7 the peer average, indicating a statistical outlier."
+      },
+      {
+        "step": 5,
+        "check": "Legitimate explanations",
+        "finding": "No patient acuity data; practice added online scheduling, which may affect visit mix but does not explain such a large coding deviation."
+      }
+    ],
+    "alternative_explanations_considered": [
+      {
+        "explanation": "Provider treats a disproportionately high\u2011acuity diabetic population requiring extensive management",
+        "assessment": "Possible but unsupported; acuity data not supplied."
+      },
+      {
+        "explanation": "Online appointment scheduling improves efficiency, leading to more appropriate use of 99215 codes",
+        "assessment": "Unlikely to account for a 28\u2011point gap; scheduling changes affect volume, not complexity coding."
+      }
+    ],
+    "key_evidence": [
+      "Share of 99215 visits: 62% (provider) vs 34% (peer mean)",
+      "Diagnosis billed: E11.65 Type 2 diabetes with hyperglycemia",
+      "Prior authorization not required and not obtained",
+      "Practice added online appointment scheduling this year"
+    ],
+    "decision": "REQUEST_RECORDS",
+    "decision_rationale": "The provider\u2019s unusually high proportion of 99215 visits suggests potential upcoding, but the limited clinical context and absence of supporting documentation prevent a definitive fraud determination. Additional medical records are needed to verify that the documented complexity matches the billed level.",
+    "recommended_action": "Obtain detailed encounter notes and supporting documentation for a representative sample of the 99215 claims to assess clinical complexity."
+  },
+  "EVAL-19": {
+    "case_id": "EVAL-19",
+    "core_anomaly": "Monthly billing increased from $42,640 to $123,648 (\u2248+91,008, +190%); per\u2011clinician average rose from $10,660 to $30,912 assuming same staff",
+    "computed_figures": {
+      "increase_amount_usd": 81008,
+      "percent_increase": 190.1,
+      "average_per_clinician_before_usd": 10660,
+      "average_per_clinician_after_usd": 30912
+    },
+    "reasoning_chain": [
+      {
+        "step": 1,
+        "check": "Identify billing anomaly",
+        "finding": "Monthly billed more than doubled after an unspecified change"
+      },
+      {
+        "step": 2,
+        "check": "Clinical appropriateness of CPT 97110 for M54.50",
+        "finding": "Therapeutic exercise is a standard, covered service for low back pain"
+      },
+      {
+        "step": 3,
+        "check": "Peer comparison (typical PT revenue)",
+        "finding": "~$30k per clinician per month is unusually high relative to industry averages ($10\u201120k)"
+      }
+    ],
+    "alternative_explanations_considered": [
+      {
+        "explanation": "Legitimate growth due to increased patient volume or new payer contracts",
+        "assessment": "Possible but unsupported by provided data"
+      },
+      {
+        "explanation": "Addition of new clinicians or support staff not disclosed",
+        "assessment": "Would explain higher total billing; staffing info missing"
+      },
+      {
+        "explanation": "Shift to higher reimbursement rates or bundled services",
+        "assessment": "Could raise revenue; no rate data supplied"
+      },
+      {
+        "explanation": "Upcoding or billing for more units per session",
+        "assessment": "Potential fraud indicator but needs claim\u2011level detail"
+      }
+    ],
+    "key_evidence": [
+      "monthly_billed_before_usd: 42640",
+      "monthly_billed_after_usd: 123648",
+      "clinicians_before: 4",
+      "procedure: 97110",
+      "diagnosis: M54.50"
+    ],
+    "decision": "REQUEST_RECORDS",
+    "decision_rationale": "The evidence shows a significant billing increase but lacks critical context such as staffing changes, claim volume, payer mix, and unit counts needed to determine if the rise is justified or indicative of abuse.",
+    "recommended_action": "Request detailed claim logs, staffing rosters (pre\u2011 and post\u2011change), payer mix information, and utilization data for the period surrounding the billing increase."
+  },
+  "EVAL-01": {
+    "case_id": "EVAL-01",
+    "core_anomaly": "Excessive volume of skin substitute procedures relative to peers and lack of required prior authorization",
+    "computed_figures": {
+      "provider_procedures_last_90_days": 344,
+      "peer_mean_procedures_last_90_days": 100,
+      "provider_to_peer_ratio": 3.44,
+      "excess_procedures_over_peer_mean": 244
+    },
+    "reasoning_chain": [
+      {
+        "step": 1,
+        "check": "Procedure volume anomaly",
+        "finding": "Provider performed 344 Q4121 skin substitute procedures in the last 90 days, far above the peer mean of 100."
+      },
+      {
+        "step": 2,
+        "check": "Clinical appropriateness of diagnosis",
+        "finding": "The billed diagnosis (S00.01XA superficial abrasion of scalp) is a minor injury for which an amniotic allograft skin substitute is not a standard of care."
+      },
+      {
+        "step": 3,
+        "check": "Prior authorization compliance",
+        "finding": "Prior authorization is required for Q4121 but was not obtained for any of the claims."
+      },
+      {
+        "step": 4,
+        "check": "Peer comparison",
+        "finding": "Among 31 comparable dermatology providers, the provider\u2019s volume is 244 procedures higher than the average, representing a 3.44\u2011fold increase."
+      },
+      {
+        "step": 5,
+        "check": "Contextual factors",
+        "finding": "The practice is a general dermatology clinic with no wound\u2011care program; high front\u2011desk turnover may affect billing but does not explain clinical mismatch."
+      }
+    ],
+    "alternative_explanations_considered": [
+      {
+        "explanation": "Coding error \u2013 the provider may have selected Q4121 instead of a less costly wound dressing code",
+        "assessment": "Possible, but the consistent high volume and lack of prior auth across many claims make a systematic error less likely."
+      },
+      {
+        "explanation": "Undocumented wound\u2011care service line or clinical trial using amniotic grafts",
+        "assessment": "Context explicitly states no wound\u2011care program; no evidence of a trial was provided."
+      },
+      {
+        "explanation": "High local incidence of severe scalp wounds requiring grafts",
+        "assessment": "No supporting epidemiologic data; diagnosis codes indicate only superficial abrasions."
+      },
+      {
+        "explanation": "Billing staff turnover leading to over\u2011billing",
+        "assessment": "Turnover could cause errors, but the scale of over\u2011utilization and clinical inappropriateness suggest intentional over\u2011billing rather than isolated mistakes."
+      }
+    ],
+    "key_evidence": [
+      "344 Q4121 procedures in 90 days",
+      "Peer mean of 100 procedures (31 peers)",
+      "Diagnosis S00.01XA (superficial scalp abrasion)",
+      "Prior authorization required but not obtained"
+    ],
+    "decision": "ESCALATE",
+    "decision_rationale": "The provider\u2019s procedure volume is dramatically higher than peers, the billed diagnosis does not justify the use of an expensive skin substitute, and required prior authorizations were not obtained. Legitimate explanations are weak, indicating potential fraud, waste, or abuse.",
+    "recommended_action": "Escalate the case for a full fraud\u2011risk investigation and request detailed clinical documentation and billing records."
+  },
+  "EVAL-14": {
+    "case_id": "EVAL-14",
+    "core_anomaly": "Provider bills 75% of visits at highest complexity level (99215) versus peer mean 35%",
+    "computed_figures": {
+      "share_of_visits_at_highest_level_percent": 75,
+      "peer_mean_share_at_highest_level_percent": 35,
+      "difference_percent_points": 40,
+      "ratio_to_peer": 2.14
+    },
+    "reasoning_chain": [
+      {
+        "step": 1,
+        "check": "Identify anomaly",
+        "finding": "Visit-level coding at 99215 is 75%, far above peer average of 35%."
+      },
+      {
+        "step": 2,
+        "check": "Clinical support for 99215",
+        "finding": "Only diagnosis listed is E11.65; high complexity requires extensive history, exam, and medical decision making with multiple diagnoses or severe risk."
+      },
+      {
+        "step": 3,
+        "check": "Peer comparison",
+        "finding": "Provider's 75% is >2x peer average; chronic condition count (4.4) and risk score (2.2) suggest sicker panel but no peer benchmarks provided for these metrics."
+      },
+      {
+        "step": 4,
+        "check": "Contextual factors",
+        "finding": "Rural HPSA, elderly multi\u2011morbid patients, solo practice could increase complexity; recent billing software change may cause default high\u2011level code selection."
+      },
+      {
+        "step": 5,
+        "check": "Legitimate explanations",
+        "finding": "Possible genuine need for high\u2011complexity visits or software\u2011driven upcoding error."
+      }
+    ],
+    "alternative_explanations_considered": [
+      {
+        "explanation": "High patient acuity (multiple chronic conditions) justifies frequent 99215 visits",
+        "assessment": "Risk score 2.2 and 4.4 chronic conditions are elevated, but a single diagnosis per claim does not demonstrate the required complexity for every visit."
+      },
+      {
+        "explanation": "Billing software change defaulted to 99215",
+        "assessment": "Practice reports software switch two years ago; could lead to systematic upcoding if defaults not reviewed."
+      }
+    ],
+    "key_evidence": [
+      "75% of visits billed at 99215 vs peer mean 35%",
+      "Average 4.4 chronic conditions per patient",
+      "Average risk score 2.2",
+      "Rural HPSA solo practice serving elderly patients",
+      "Recent billing software vendor change"
+    ],
+    "decision": "REQUEST_RECORDS",
+    "decision_rationale": "The high proportion of highest\u2011level visits is atypical and not fully supported by the single diagnosis provided. Contextual factors may justify some increase, but documentation is needed to confirm medical necessity for each 99215 claim.",
+    "recommended_action": "Request detailed encounter notes and supporting documentation for a representative sample of the 99215 visits to assess clinical justification."
+  },
+  "EVAL-11": {
+    "case_id": "EVAL-11",
+    "core_anomaly": "Excessive proportion of visits billed at highest complexity level (99215)",
+    "computed_figures": {
+      "provider_share_high_level_percent": 71,
+      "peer_mean_share_high_level_percent": 33,
+      "difference_percent": 38,
+      "ratio_to_peer": 2.15,
+      "average_chronic_conditions_per_patient": 1.1,
+      "average_patient_risk_score": 0.81
+    },
+    "reasoning_chain": [
+      {
+        "step": 1,
+        "check": "Share of high\u2011complexity visits",
+        "finding": "Provider bills 71% of visits as 99215 versus peer average 33% (38% above peer, 2.15\u00d7 higher)."
+      },
+      {
+        "step": 2,
+        "check": "Clinical support for 99215 based on diagnosis",
+        "finding": "Only diagnosis listed is E11.65 (type 2 diabetes with hyperglycemia). This condition alone rarely justifies high\u2011complexity decision making; typical billing would be 99213\u201199214."
+      },
+      {
+        "step": 3,
+        "check": "Patient panel risk profile",
+        "finding": "Panel is younger and healthier (risk score 0.81, chronic conditions 1.1 per patient) than peers, further reducing expectation for high\u2011complexity visits."
+      },
+      {
+        "step": 4,
+        "check": "Peer comparison",
+        "finding": "Even accounting for regional practice patterns, provider\u2019s 71% is markedly above peer mean of 33%."
+      },
+      {
+        "step": 5,
+        "check": "Operational factors",
+        "finding": "High front\u2011desk staff turnover could lead to coding errors or misapplication of CPT codes."
+      }
+    ],
+    "alternative_explanations_considered": [
+      {
+        "explanation": "Staff coding errors due to turnover",
+        "assessment": "Plausible; could inflate high\u2011complexity billing without intent to defraud."
+      },
+      {
+        "explanation": "Patients have undocumented comorbidities making visits high complexity",
+        "assessment": "Possible but not indicated in provided data; would need detailed clinical notes."
+      },
+      {
+        "explanation": "Regional practice pattern of higher coding intensity",
+        "assessment": "Unlikely given peer mean is 33% for same region."
+      }
+    ],
+    "key_evidence": [
+      "71% of visits billed as 99215 vs 33% peer mean",
+      "Diagnosis limited to E11.65",
+      "Average chronic conditions per patient 1.1",
+      "Average patient risk score 0.81",
+      "High front\u2011desk staff turnover"
+    ],
+    "decision": "REQUEST_RECORDS",
+    "decision_rationale": "The evidence shows a significant billing pattern anomaly, but without patient encounter documentation it cannot be determined whether the high\u2011complexity codes are clinically justified or result from coding errors. Additional records (clinical notes, full claim histories) are needed to assess intent and validity.",
+    "recommended_action": "Obtain detailed encounter documentation and coding logs for a representative sample of the 99215 claims to verify medical necessity."
+  },
+  "EVAL-04": {
+    "case_id": "EVAL-04",
+    "core_anomaly": "Excessive volume of skin substitute procedures relative to peers",
+    "computed_figures": {
+      "provider_procedures_last_90_days": 299,
+      "peer_mean_procedures_last_90_days": 87,
+      "provider_to_peer_ratio": 3.44
+    },
+    "reasoning_chain": [
+      {
+        "step": 1,
+        "check": "Volume comparison",
+        "finding": "Provider performed 299 Q4121 procedures in the last 90 days, which is 3.44 times the peer mean of 87 (48 peers)."
+      },
+      {
+        "step": 2,
+        "check": "Clinical appropriateness of diagnosis",
+        "finding": "Diagnosis L97.512 (non\u2011pressure chronic ulcer with fat layer exposed) meets FDA/clinical guidelines for amniotic allograft after \u22654 weeks of failed standard care; context confirms such failure was documented."
+      },
+      {
+        "step": 3,
+        "check": "Peer benchmark assessment",
+        "finding": "Even accounting for referral volume, the provider\u2019s rate (~3.32 procedures/day) far exceeds the peer average (~0.97 procedures/day)."
+      },
+      {
+        "step": 4,
+        "check": "Legitimate explanations review",
+        "finding": "Hospital\u2011affiliated wound\u2011care center, referrals from four endocrinology practices, and a diabetic foot ulcer population could increase volume, but no patient\u2011count or unit\u2011per\u2011claim data provided to substantiate the magnitude."
+      }
+    ],
+    "alternative_explanations_considered": [
+      {
+        "explanation": "High referral volume from multiple endocrinology practices and a large diabetic foot ulcer population",
+        "assessment": "Plausible but requires patient\u2011level data to confirm that the volume reflects genuine need."
+      },
+      {
+        "explanation": "Provider\u2019s documentation of 4+ weeks of failed standard care and prior authorization obtained",
+        "assessment": "Shows compliance, yet does not explain why the volume is >3\u00d7 peer average."
+      },
+      {
+        "explanation": "Potential coding of multiple small wound areas as separate Q4121 units",
+        "assessment": "Possible; needs unit\u2011by\u2011unit wound measurement records."
+      }
+    ],
+    "key_evidence": [
+      "299 skin substitute procedures in last 90 days",
+      "Peer mean of 87 procedures (48 peers)",
+      "Prior authorization obtained",
+      "Diagnosis L97.512 with documented failure of standard care"
+    ],
+    "decision": "REQUEST_RECORDS",
+    "decision_rationale": "The provider\u2019s procedure volume is markedly higher than peers, but the clinical indication appears documented and prior authorization was obtained. Without patient\u2011level documentation (wound size, number of patients, units per claim, referral logs), we cannot determine if the excess is justified or indicative of fraud.",
+    "recommended_action": "Request detailed patient encounter records, wound measurement documentation, unit\u2011by\u2011unit claim breakdown, and referral source logs to assess whether the high procedure volume is clinically warranted."
+  },
+  "EVAL-17": {
+    "case_id": "EVAL-17",
+    "core_anomaly": "Sudden ~237% increase in monthly billed amount without added clinicians, locations, or services",
+    "computed_figures": {
+      "percent_increase": 236.6,
+      "monthly_before_per_clinician": 10184.75,
+      "monthly_after_per_clinician": 34265.25
+    },
+    "reasoning_chain": [
+      {
+        "step": 1,
+        "check": "Magnitude of billing change",
+        "finding": "Monthly billing rose from $40,739 to $137,061, a 236.6% increase."
+      },
+      {
+        "step": 2,
+        "check": "Staffing and service consistency",
+        "finding": "Clinician count unchanged (4) and no new locations or services reported."
+      },
+      {
+        "step": 3,
+        "check": "Clinical appropriateness of procedure",
+        "finding": "97110 for low back pain (M54.50) is a standard, allowed service; no prior auth required."
+      },
+      {
+        "step": 4,
+        "check": "Patient geography anomaly",
+        "finding": "40% of new patients live >100 miles away, atypical for in\u2011person PT."
+      },
+      {
+        "step": 5,
+        "check": "Potential software impact",
+        "finding": "Billing software vendor changed two years ago; could affect coding or duplicate submissions."
+      }
+    ],
+    "alternative_explanations_considered": [
+      {
+        "explanation": "Legitimate increase in patient volume or longer therapy sessions",
+        "assessment": "No evidence of added clinicians or expanded capacity; volume surge would likely require staffing changes."
+      },
+      {
+        "explanation": "Upcoding or duplicate claims due to new billing software",
+        "assessment": "Plausible; software change could misapply codes or generate multiple lines."
+      },
+      {
+        "explanation": "Telehealth or remote PT services to distant patients",
+        "assessment": "Possible, but PT services are typically hands\u2011on; remote delivery would need documentation."
+      }
+    ],
+    "key_evidence": [
+      "Monthly billed before: $40,739",
+      "Monthly billed after: $137,061",
+      "Clinicians unchanged (4)",
+      "40% of new patients >100 miles away",
+      "No new locations or services"
+    ],
+    "decision": "REQUEST_RECORDS",
+    "decision_rationale": "The dramatic billing increase and distant patient pattern raise concerns, but without claim\u2011level details, patient encounter logs, and software change documentation, fraud cannot be confirmed nor ruled out.",
+    "recommended_action": "Request detailed claim line items, patient encounter records, mileage documentation, and a report on the billing software change to assess coding accuracy."
+  },
+  "EVAL-06": {
+    "case_id": "EVAL-06",
+    "core_anomaly": "Billed session volume exceeds clinician capacity",
+    "computed_figures": {
+      "max_sessions_per_day": 16,
+      "billed_sessions_per_day": 30,
+      "excess_sessions": 14,
+      "sessions_per_clinician": 15,
+      "clinician_capacity_per_day": 8,
+      "ratio_to_peer": 2.14
+    },
+    "reasoning_chain": [
+      {
+        "step": 1,
+        "check": "Capacity calculation",
+        "finding": "2 clinicians \u00d7 8\u2011hour day \u00f7 60\u2011min per session = 16 possible sessions/day"
+      },
+      {
+        "step": 2,
+        "check": "Billed volume vs capacity",
+        "finding": "30 sessions billed/day exceeds max 16 by 14 sessions"
+      },
+      {
+        "step": 3,
+        "check": "Peer comparison",
+        "finding": "Peer mean is 14 sessions/day; provider bills >2\u00d7 peer"
+      },
+      {
+        "step": 4,
+        "check": "Clinical appropriateness",
+        "finding": "Procedure 90837 matches diagnosis F32.1; no prior auth required"
+      },
+      {
+        "step": 5,
+        "check": "Documentation time",
+        "finding": "15\u202fmin documentation per session does not affect capacity"
+      }
+    ],
+    "alternative_explanations_considered": [
+      {
+        "explanation": "Additional unlisted clinicians or locums",
+        "assessment": "Evidence states only 2 licensed clinicians on staff; no record of others"
+      },
+      {
+        "explanation": "Group therapy counted as multiple sessions",
+        "assessment": "Code 90837 is for individual therapy; group therapy uses different CPT codes"
+      },
+      {
+        "explanation": "Clerical reporting error in average sessions",
+        "assessment": "Even if off by a few, 30 is far beyond plausible capacity given constraints"
+      },
+      {
+        "explanation": "Telehealth allowing overlapping sessions",
+        "assessment": "Clinician time remains limited; cannot conduct concurrent 60\u2011min sessions"
+      }
+    ],
+    "key_evidence": [
+      "average_sessions_billed_per_day: 30",
+      "licensed_clinicians_on_staff: 2",
+      "session_length_minutes: 60",
+      "standard_workday_hours: 8",
+      "peer_mean_sessions_per_day: 14",
+      "procedure: 90837"
+    ],
+    "decision": "ESCALATE",
+    "decision_rationale": "The provider billed 30 individual psychotherapy sessions per day, which exceeds the maximum feasible 16 sessions given staff size and work hours, and is more than double peer average. No legitimate clinical or operational explanation accounts for this discrepancy, indicating potential fraud, waste, or abuse.",
+    "recommended_action": "Escalate to fraud investigation team for detailed audit"
+  },
+  "EVAL-03": {
+    "case_id": "EVAL-03",
+    "core_anomaly": "Provider performed markedly higher number of Q4121 skin substitute procedures than peers (272 vs 106 in last 90 days)",
+    "computed_figures": {
+      "total_procedures_last_90_days": 272,
+      "peer_mean_procedures_last_90_days": 106,
+      "procedure_ratio_to_peer_mean": 2.566,
+      "provider_daily_average": 3.022,
+      "peer_daily_average": 1.178
+    },
+    "reasoning_chain": [
+      {
+        "step": 1,
+        "check": "Volume anomaly",
+        "finding": "272 procedures in 90 days is >2.5\u00d7 the peer mean of 106"
+      },
+      {
+        "step": 2,
+        "check": "Clinical appropriateness of diagnosis for procedure",
+        "finding": "Diagnosis L97.512 (chronic ulcer) meets indication for skin substitute when standard care fails >4 weeks, which is documented"
+      },
+      {
+        "step": 3,
+        "check": "Prior authorization compliance",
+        "finding": "Prior authorization required and obtained for each claim"
+      },
+      {
+        "step": 4,
+        "check": "Peer comparison context",
+        "finding": "43 comparable providers; provider\u2019s volume is an outlier but could reflect referral volume from four endocrinology practices"
+      },
+      {
+        "step": 5,
+        "check": "Potential legitimate drivers",
+        "finding": "High referral base, regional diabetic ulcer prevalence, specialized wound\u2011care center, possible per\u2011cm billing inflation"
+      }
+    ],
+    "alternative_explanations_considered": [
+      {
+        "explanation": "High referral volume from multiple endocrinology practices",
+        "assessment": "Plausible; could generate higher case load"
+      },
+      {
+        "explanation": "Regional prevalence of diabetic foot ulcers in Miami\u2011Dade",
+        "assessment": "Plausible; may increase need for advanced wound care"
+      },
+      {
+        "explanation": "Aggressive treatment protocol or lower threshold for skin substitute use",
+        "assessment": "Possible but requires documentation of failure of standard care for each case"
+      },
+      {
+        "explanation": "Coding per\u2011square\u2011centimeter leading to inflated count",
+        "assessment": "Unlikely to affect procedure count, but could affect charge amount"
+      }
+    ],
+    "key_evidence": [
+      "272 Q4121 procedures in last 90 days",
+      "Peer mean 106 procedures among 43 peers",
+      "Prior authorization obtained",
+      "Documented failure of 4+ weeks standard care before each application",
+      "Referral network from four endocrinology practices"
+    ],
+    "decision": "REQUEST_RECORDS",
+    "decision_rationale": "While the volume is an outlier, the diagnosis and prior\u2011auth documentation suggest clinical legitimacy. Additional medical records are needed to verify that each procedure met the documented failure\u2011of\u2011standard\u2011care criteria and that the per\u2011cm billing aligns with policy.",
+    "recommended_action": "Request detailed patient charts, including ulcer measurements, prior\u2011care documentation, and justification for each skin substitute application."
+  },
+  "EVAL-05": {
+    "case_id": "EVAL-05",
+    "core_anomaly": "Provider performed markedly more Q4121 skin substitute procedures than peers (272 vs 116 in 90 days)",
+    "computed_figures": {
+      "provider_procedures_last_90_days": 272,
+      "peer_mean_procedures_last_90_days": 116,
+      "ratio_to_peer_mean": 2.34,
+      "percent_above_peer_mean": 134.5
+    },
+    "reasoning_chain": [
+      {
+        "step": 1,
+        "check": "Volume anomaly",
+        "finding": "272 procedures in 90 days is 2.34\u00d7 the peer mean of 116 (134.5% above average)"
+      },
+      "",
+      {
+        "step": 2,
+        "check": "Clinical appropriateness",
+        "finding": "Diagnosis L97.512 (chronic ulcer) aligns with skin substitute use"
+      },
+      "",
+      {
+        "step": 3,
+        "check": "Peer comparison",
+        "finding": "Provider outpaces 31 peers; no benchmark provided for acceptable variance"
+      },
+      "",
+      {
+        "step": "4",
+        "check": "Documentation of prior conservative care",
+        "finding": "Records confirming standard wound care before using skin substitute were not supplied"
+      }
+    ],
+    "alternative_explanations_considered": [
+      {
+        "explanation": "Provider operates a high\u2011volume wound\u2011care clinic serving a population with elevated chronic ulcer prevalence",
+        "assessment": "Possible legitimate driver of higher utilization"
+      },
+      "",
+      {
+        "explanation": "Provider may have a contractual arrangement with a skin\u2011substitute supplier leading to increased use",
+        "assessment": "Could be business\u2011related but not inherently improper"
+      },
+      "",
+      {
+        "explanation": "Prior authorization was obtained, indicating compliance with payer requirements",
+        "assessment": "Supports legitimacy of each claim"
+      }
+    ],
+    "key_evidence": [
+      "272 Q4121 procedures in last 90 days",
+      "Peer mean of 116 procedures among 31 peers",
+      "Diagnosis L97.512 matches procedure",
+      "Prior authorization obtained"
+    ],
+    "decision": "REQUEST_RECORDS",
+    "decision_rationale": "While the clinical indication is appropriate and prior authorization was secured, the volume is substantially higher than peers and there is no documentation that standard wound\u2011care measures were attempted first. Additional records are needed to determine if the elevated utilization is justified.",
+    "recommended_action": "Obtain the patient\u2011level records showing prior conservative treatments and any clinical protocols that explain the high usage rate."
+  },
+  "EVAL-08": {
+    "case_id": "EVAL-08",
+    "core_anomaly": "Average of 45 billed 60\u2011minute psychotherapy sessions per day, far exceeding peer average of 10 and appearing high relative to staffing",
+    "computed_figures": {
+      "sessions_per_clinician": 5,
+      "max_sessions_per_clinician_without_documentation": 8,
+      "max_sessions_per_clinician_with_documentation": 6,
+      "utilization_percent": 83.33,
+      "provider_vs_peer_multiplier": 4.5
+    },
+    "reasoning_chain": [
+      {
+        "step": 1,
+        "check": "Capacity vs billed volume",
+        "finding": "9 clinicians \u00d7 8\u2011hour day = 72 possible 60\u2011min slots; with 15\u2011min documentation each slot = 75\u202fmin, yielding a realistic max of 6 sessions/clinician (54 total). Billed 45 sessions fits within this max but uses 83% of capacity."
+      },
+      {
+        "step": 2,
+        "check": "Clinical appropriateness of diagnosis for procedure",
+        "finding": "F32.1 (moderate depression) legitimately supports 60\u2011min psychotherapy; no clinical mismatch."
+      },
+      {
+        "step": 3,
+        "check": "Peer comparison",
+        "finding": "Provider bills 4.5\u00d7 the peer mean (45 vs 10). Such a gap is atypical for outpatient behavioral health clinics."
+      },
+      {
+        "step": 4,
+        "check": "Documentation time adequacy",
+        "finding": "Only 15\u202fmin of documentation recorded per 60\u2011min session, raising concern that full therapeutic time may not be delivered."
+      }
+    ],
+    "alternative_explanations_considered": [
+      {
+        "explanation": "High local demand or specialized services leading to higher volume",
+        "assessment": "Possible but would likely be reflected in staffing increases; current staff size suggests volume is stretched."
+      },
+      {
+        "explanation": "Highly efficient workflow allowing near\u2011max capacity utilization",
+        "assessment": "Even at optimal efficiency, 45 sessions is near the theoretical ceiling and still far above peer norms."
+      },
+      {
+        "explanation": "Use of group therapy counted as individual 60\u2011min sessions",
+        "assessment": "Procedure code 90837 is for individual psychotherapy; group sessions would require different coding."
+      }
+    ],
+    "key_evidence": [
+      "average_sessions_billed_per_day: 45",
+      "licensed_clinicians_on_staff: 9",
+      "session_length_minutes: 60",
+      "documentation_minutes_per_session: 15",
+      "peer_mean_sessions_per_day: 10",
+      "standard_workday_hours: 8"
+    ],
+    "decision": "REQUEST_RECORDS",
+    "decision_rationale": "The billed volume is unusually high and documentation time appears insufficient, but the numbers could still be feasible given staffing. Additional detailed records (time\u2011stamped notes, scheduling logs, clinician work\u2011hours) are needed to determine if services were actually rendered as billed.",
+    "recommended_action": "Request detailed session logs, clinician time sheets, and supporting documentation to verify actual service duration and appropriateness of billing."
+  },
+  "EVAL-13": {
+    "case_id": "EVAL-13",
+    "core_anomaly": "Unusually high proportion of level 99215 office visits (70% vs peer mean 36%)",
+    "computed_figures": {
+      "share_of_visits_at_highest_level_percent": 70,
+      "peer_mean_share_at_highest_level_percent": 36,
+      "percentage_point_difference": 34,
+      "ratio_to_peer": 1.9444444444444444,
+      "average_chronic_conditions_per_patient": 4.6,
+      "average_patient_risk_score": 1.94
+    },
+    "reasoning_chain": [
+      {
+        "step": 1,
+        "check": "Identify anomaly",
+        "finding": "Share of 99215 visits is 70%, far above peer mean of 36%."
+      },
+      {
+        "step": 2,
+        "check": "Compute figures",
+        "finding": "Difference 34 pp; provider ratio 1.94 times peer average."
+      },
+      {
+        "step": 3,
+        "check": "Clinical support for 99215",
+        "finding": "99215 requires high\u2011complexity decision making; a single diagnosis of E11.65 typically does not meet this threshold."
+      },
+      {
+        "step": 4,
+        "check": "Peer comparison",
+        "finding": "Provider\u2019s 70% is an outlier relative to peer mean 36%."
+      },
+      {
+        "step": 5,
+        "check": "Contextual factors",
+        "finding": "Rural HPSA, solo practice, elderly patients with multiple chronic conditions (avg 4.6 conditions, risk score 1.94) could increase visit complexity."
+      },
+      {
+        "step": 6,
+        "check": "Overall assessment",
+        "finding": "Even accounting for patient complexity, the magnitude of the outlier suggests possible upcoding."
+      }
+    ],
+    "alternative_explanations_considered": [
+      {
+        "explanation": "High patient complexity justifies more 99215 visits",
+        "assessment": "Patient panel is indeed complex, but 70% remains markedly higher than peers."
+      },
+      {
+        "explanation": "Limited access leads to longer, more comprehensive visits",
+        "assessment": "Possible, yet coding should reflect documented complexity."
+      },
+      {
+        "explanation": "Coding error or misunderstanding of level criteria",
+        "assessment": "Could explain some overuse but does not fully account for the gap."
+      }
+    ],
+    "key_evidence": [
+      "70% of visits billed at 99215",
+      "Peer mean share 36%",
+      "Average 4.6 chronic conditions per patient",
+      "Average risk score 1.94",
+      "Diagnosis billed: E11.65"
+    ],
+    "decision": "REQUEST_RECORDS",
+    "decision_rationale": "The provider\u2019s 99215 utilization is substantially higher than peers and the single diagnosis cited does not clearly support high\u2011complexity billing. While the rural, high\u2011risk patient population may justify some increase, the evidence is insufficient to determine intent. Additional clinical documentation is needed to assess medical necessity.",
+    "recommended_action": "Request detailed encounter notes and supporting documentation for a representative sample of the 99215 visits to verify that high\u2011complexity criteria were met."
+  }
+}

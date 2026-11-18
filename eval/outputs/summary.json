@@ -1,0 +1,150 @@
+{
+  "model": "openai/gpt-oss-120b",
+  "decisions": [
+    {
+      "case_id": "EVAL-16",
+      "template": "billing_spike",
+      "label": "ESCALATE",
+      "agent": "REQUEST_RECORDS",
+      "figure_correct": true
+    },
+    {
+      "case_id": "EVAL-10",
+      "template": "therapy_hours",
+      "label": "REQUEST_RECORDS",
+      "agent": "REQUEST_RECORDS",
+      "figure_correct": false
+    },
+    {
+      "case_id": "EVAL-07",
+      "template": "therapy_hours",
+      "label": "ESCALATE",
+      "agent": "ESCALATE",
+      "figure_correct": false
+    },
+    {
+      "case_id": "EVAL-12",
+      "template": "em_upcoding",
+      "label": "ESCALATE",
+      "agent": "REQUEST_RECORDS",
+      "figure_correct": true
+    },
+    {
+      "case_id": "EVAL-02",
+      "template": "skin_substitute",
+      "label": "ESCALATE",
+      "agent": "ESCALATE",
+      "figure_correct": true
+    },
+    {
+      "case_id": "EVAL-20",
+      "template": "billing_spike",
+      "label": "REQUEST_RECORDS",
+      "agent": "REQUEST_RECORDS",
+      "figure_correct": true
+    },
+    {
+      "case_id": "EVAL-09",
+      "template": "therapy_hours",
+      "label": "CLOSE",
+      "agent": "REQUEST_RECORDS",
+      "figure_correct": false
+    },
+    {
+      "case_id": "EVAL-18",
+      "template": "billing_spike",
+      "label": "CLOSE",
+      "agent": "CLOSE",
+      "figure_correct": true
+    },
+    {
+      "case_id": "EVAL-15",
+      "template": "em_upcoding",
+      "label": "REQUEST_RECORDS",
+      "agent": "REQUEST_RECORDS",
+      "figure_correct": true
+    },
+    {
+      "case_id": "EVAL-19",
+      "template": "billing_spike",
+      "label": "REQUEST_RECORDS",
+      "agent": "REQUEST_RECORDS",
+      "figure_correct": true
+    },
+    {
+      "case_id": "EVAL-01",
+      "template": "skin_substitute",
+      "label": "ESCALATE",
+      "agent": "ESCALATE",
+      "figure_correct": true
+    },
+    {
+      "case_id": "EVAL-14",
+      "template": "em_upcoding",
+      "label": "CLOSE",
+      "agent": "REQUEST_RECORDS",
+      "figure_correct": true
+    },
+    {
+      "case_id": "EVAL-11",
+      "template": "em_upcoding",
+      "label": "ESCALATE",
+      "agent": "REQUEST_RECORDS",
+      "figure_correct": true
+    },
+    {
+      "case_id": "EVAL-04",
+      "template": "skin_substitute",
+      "label": "CLOSE",
+      "agent": "REQUEST_RECORDS",
+      "figure_correct": true
+    },
+    {
+      "case_id": "EVAL-17",
+      "template": "billing_spike",
+      "label": "ESCALATE",
+      "agent": "REQUEST_RECORDS",
+      "figure_correct": true
+    },
+    {
+      "case_id": "EVAL-06",
+      "template": "therapy_hours",
+      "label": "ESCALATE",
+      "agent": "ESCALATE",
+      "figure_correct": false
+    },
+    {
+      "case_id": "EVAL-03",
+      "template": "skin_substitute",
+      "label": "CLOSE",
+      "agent": "REQUEST_RECORDS",
+      "figure_correct": true
+    },
+    {
+      "case_id": "EVAL-05",
+      "template": "skin_substitute",
+      "label": "REQUEST_RECORDS",
+      "agent": "REQUEST_RECORDS",
+      "figure_correct": true
+    },
+    {
+      "case_id": "EVAL-08",
+      "template": "therapy_hours",
+      "label": "CLOSE",
+      "agent": "REQUEST_RECORDS",
+      "figure_correct": true
+    },
+    {
+      "case_id": "EVAL-13",
+      "template": "em_upcoding",
+      "label": "CLOSE",
+      "agent": "REQUEST_RECORDS",
+      "figure_correct": true
+    }
+  ],
+  "judge_planted_errors_caught": {
+    "wrong_figure": 9,
+    "skipped_reasoning": 4,
+    "final_decision": 10
+  }
+}
